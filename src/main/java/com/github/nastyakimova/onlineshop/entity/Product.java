@@ -4,10 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productID;
@@ -18,6 +19,9 @@ public class Product {
 
     public Integer getProductID() {
         return productID;
+    }
+
+    protected Product() {
     }
 
     public void setProductID(Integer productID) {
@@ -67,4 +71,5 @@ public class Product {
     public String toString() {
         return "Product: " + title + "(" + price + "$ )";
     }
+
 }
