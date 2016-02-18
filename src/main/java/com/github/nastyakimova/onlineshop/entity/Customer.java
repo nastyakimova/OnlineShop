@@ -15,7 +15,9 @@ public class Customer implements Serializable {
     private String password;
 
     protected Customer() {
-    };
+    }
+
+    ;
 
     public Integer getCustomerID() {
         return customerID;
@@ -59,6 +61,23 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return name + " " + surname;
+        return "Customer "+name + " " + surname;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Customer)) {
+            return false;
+        }
+
+        Customer customer = (Customer) o;
+
+        return customer.customerID == customerID;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return customerID ^ (customerID >>> 32);
     }
 }
