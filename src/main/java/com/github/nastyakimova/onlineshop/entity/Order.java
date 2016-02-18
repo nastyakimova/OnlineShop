@@ -1,19 +1,14 @@
 package com.github.nastyakimova.onlineshop.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "order")
 public class Order implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer orderID;
-
     private Customer customer;
     private Boolean isPaid;
     private List<Product> productList = new ArrayList<>();
@@ -21,6 +16,9 @@ public class Order implements Serializable {
     protected Order() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id", unique = true, nullable = false)
     public Integer getOrderID() {
         return orderID;
     }
@@ -29,6 +27,8 @@ public class Order implements Serializable {
         this.orderID = orderID;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     public Customer getCustomer() {
         return customer;
     }
@@ -37,6 +37,7 @@ public class Order implements Serializable {
         this.customer = customer;
     }
 
+    @Column(name = "is_paid")
     public Boolean getIsPaid() {
         return isPaid;
     }
@@ -44,6 +45,8 @@ public class Order implements Serializable {
     public void setIsPaid(Boolean isPaid) {
         this.isPaid = isPaid;
     }
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
 
     public List<Product> getProductList() {
         return productList;

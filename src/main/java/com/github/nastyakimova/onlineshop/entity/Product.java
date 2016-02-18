@@ -1,33 +1,33 @@
 package com.github.nastyakimova.onlineshop.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "product")
 public class Product implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productID;
 
     private String title;
     private Boolean isAvailable;
     private BigDecimal price;
 
-    public Integer getProductID() {
-        return productID;
+    protected Product() {
     }
 
-    protected Product() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id", unique = true, nullable = false)
+    public Integer getProductID() {
+        return productID;
     }
 
     public void setProductID(Integer productID) {
         this.productID = productID;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -36,6 +36,7 @@ public class Product implements Serializable {
         this.title = title;
     }
 
+    @Column(name = "is_available")
     public Boolean getIsAvailable() {
         return isAvailable;
     }
@@ -44,6 +45,7 @@ public class Product implements Serializable {
         this.isAvailable = isAvailable;
     }
 
+    @Column(name = "price")
     public BigDecimal getPrice() {
         return price;
     }

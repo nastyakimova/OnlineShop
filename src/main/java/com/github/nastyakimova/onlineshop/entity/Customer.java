@@ -6,20 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "customer")
 public class Customer implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer customerID;
 
+    private Integer customerID;
     private String name;
     private String surname;
     private String email;
     private String password;
-    List<Order> orderList=new ArrayList<>();
+    List<Order> orderList = new ArrayList<>();
 
     protected Customer() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id", unique = true, nullable = false)
     public Integer getCustomerID() {
         return customerID;
     }
@@ -28,6 +30,7 @@ public class Customer implements Serializable {
         this.customerID = customerID;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -36,6 +39,7 @@ public class Customer implements Serializable {
         this.name = name;
     }
 
+    @Column(name = "surname")
     public String getSurname() {
         return surname;
     }
@@ -44,6 +48,7 @@ public class Customer implements Serializable {
         this.surname = surname;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -52,6 +57,7 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -60,6 +66,7 @@ public class Customer implements Serializable {
         this.password = password;
     }
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
     public List<Order> getOrderList() {
         return orderList;
     }
