@@ -14,7 +14,7 @@ public class Product implements Serializable {
     private Integer productID;
 
     private String title;
-    private Boolean available;
+    private Boolean isAvailable;
     private BigDecimal price;
 
     public Integer getProductID() {
@@ -36,12 +36,12 @@ public class Product implements Serializable {
         this.title = title;
     }
 
-    public Boolean getAvailable() {
-        return available;
+    public Boolean getIsAvailable() {
+        return isAvailable;
     }
 
-    public void setAvailable(Boolean available) {
-        this.available = available;
+    public void setIsAvailable(Boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
     public BigDecimal getPrice() {

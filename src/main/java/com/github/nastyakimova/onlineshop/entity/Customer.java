@@ -2,6 +2,8 @@ package com.github.nastyakimova.onlineshop.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Customer implements Serializable {
@@ -13,11 +15,10 @@ public class Customer implements Serializable {
     private String surname;
     private String email;
     private String password;
+    List<Order> orderList=new ArrayList<>();
 
     protected Customer() {
     }
-
-    ;
 
     public Integer getCustomerID() {
         return customerID;
@@ -59,9 +60,17 @@ public class Customer implements Serializable {
         this.password = password;
     }
 
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
     @Override
     public String toString() {
-        return "Customer "+name + " " + surname;
+        return "Customer " + name + " " + surname;
     }
 
     @Override
