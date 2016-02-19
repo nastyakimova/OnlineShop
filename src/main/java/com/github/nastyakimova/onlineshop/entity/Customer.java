@@ -16,8 +16,9 @@ public class Customer implements Serializable {
     private String password;
     List<Order> orderList = new ArrayList<>();
 
-    protected Customer() {
+    public Customer() {
     }
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
