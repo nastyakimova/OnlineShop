@@ -11,4 +11,8 @@ public interface CustomerService {
 
     void deleteCustomer(Customer customer);
 
+    void lockCustomer(Customer customer);
+
+    void unlockCustomer(Customer customer);
+
 }
