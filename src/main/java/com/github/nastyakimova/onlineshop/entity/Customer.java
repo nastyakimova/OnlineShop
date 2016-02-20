@@ -14,6 +14,7 @@ public class Customer implements Serializable {
     private String surname;
     private String email;
     private String password;
+    private Boolean isLocked;
     List<Order> orderList = new ArrayList<>();
 
     public Customer() {
@@ -76,6 +77,15 @@ public class Customer implements Serializable {
         this.orderList = orderList;
     }
 
+    @Column(name = "isLocked")
+    public Boolean getIsLocked() {
+        return isLocked;
+    }
+
+    public void setIsLocked(Boolean isLocked) {
+        this.isLocked = isLocked;
+    }
+
     @Override
     public String toString() {
         return "Customer " + name + " " + surname;
@@ -97,4 +107,5 @@ public class Customer implements Serializable {
     public int hashCode() {
         return customerID ^ (customerID >>> 32);
     }
+
 }

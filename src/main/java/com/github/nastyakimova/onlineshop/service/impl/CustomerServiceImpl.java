@@ -39,11 +39,17 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void lockCustomer(Customer customer) {
-
+        customer.setIsLocked(true);
+        customerRepository.save(customer);
+        LOG.info(customer+" was locked");
     }
 
     @Override
     public void unlockCustomer(Customer customer) {
-
+        if (customer.getIsLocked()){
+            customer.setIsLocked(false);
+            customerRepository.save(customer);
+            LOG.info(customer+" was unlocked");
+        }
     }
 }
