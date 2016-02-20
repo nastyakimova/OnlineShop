@@ -14,29 +14,35 @@ import java.util.List;
 @Service
 @Transactional
 public class OrderServiceImpl implements OrderService {
-    public static final Logger LOG= Logger.getLogger(OrderServiceImpl.class);
+    public static final Logger LOG = Logger.getLogger(OrderServiceImpl.class);
 
     @Autowired
     OrderRepository orderRepository;
 
     @Override
     public void saveOrder(Order order) {
-
+        orderRepository.save(order);
+        LOG.info(order + " was saved to the database");
     }
 
     @Override
     public Order getOrderById(Integer orderID) {
-        return null;
+        Order order = orderRepository.findOne(orderID);
+        LOG.info(order + " was loaded from the database");
+        return order;
     }
 
     @Override
     public void deleteOrder(Order order) {
-
+        orderRepository.delete(order);
+        LOG.info(order + " was deleted from the database");
     }
 
     @Override
     public List<Order> getAllOrders() {
-        return null;
+        List<Order> orderList= (List<Order>) orderRepository.findAll();
+        LOG.info("list of orders was loaded from the database");
+        return orderList;
     }
 
     @Override
