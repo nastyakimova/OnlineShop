@@ -34,13 +34,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Product product) {
         productRepository.delete(product);
-        LOG.info(product+" was deleted from the database");
+        LOG.info(product + " was deleted from the database");
     }
 
     @Override
     public List<Product> getAllProducts() {
-        List<Product> productList= (List<Product>) productRepository.findAll();
+        List<Product> productList = (List<Product>) productRepository.findAll();
         LOG.info("list of all products was loaded from the database");
         return productList;
     }
+
 }

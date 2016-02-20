@@ -2,6 +2,7 @@ package com.github.nastyakimova.onlineshop.service.impl;
 
 import com.github.nastyakimova.onlineshop.entity.Customer;
 import com.github.nastyakimova.onlineshop.entity.Order;
+import com.github.nastyakimova.onlineshop.entity.Product;
 import com.github.nastyakimova.onlineshop.repositories.OrderRepository;
 import com.github.nastyakimova.onlineshop.service.OrderService;
 import org.apache.log4j.Logger;
@@ -40,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getAllOrders() {
-        List<Order> orderList= (List<Order>) orderRepository.findAll();
+        List<Order> orderList = (List<Order>) orderRepository.findAll();
         LOG.info("list of all orders was loaded from the database");
         return orderList;
     }
@@ -48,5 +49,14 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getAllOrdersInCart(Customer customer) {
         return null;
+    }
+
+    @Override
+    public void addProductsToOrder(Order order, List<Product> productList) {
+        for (Product product : productList) {
+            order.getProductList().add(product);
+            LOG.info(product + " was added successfully to the order " + order);
+        }
+        orderRepository.save(order);
     }
 }
