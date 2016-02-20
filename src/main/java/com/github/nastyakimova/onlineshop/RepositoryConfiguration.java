@@ -1,6 +1,5 @@
-package com.github.nastyakimova.onlineshop.configuration;
+package com.github.nastyakimova.onlineshop;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,7 +14,4 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource(value = { "classpath:application.properties" })
 @EnableTransactionManagement
 public class RepositoryConfiguration {
-    public static void main(String[] args) {
-        SpringApplication.run(RepositoryConfiguration.class);
-    }
 }
