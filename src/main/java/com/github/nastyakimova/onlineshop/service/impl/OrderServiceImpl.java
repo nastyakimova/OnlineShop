@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getAllOrders() {
         List<Order> orderList= (List<Order>) orderRepository.findAll();
-        LOG.info("list of orders was loaded from the database");
+        LOG.info("list of all orders was loaded from the database");
         return orderList;
     }
 
