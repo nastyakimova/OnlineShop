@@ -6,13 +6,11 @@ import com.github.nastyakimova.onlineshop.entity.Order;
 import java.util.List;
 
 public interface OrderService {
-    void createOrder(Order order);
+    void saveOrder(Order order);
 
-    Order getOrderById();
+    Order getOrderById(Integer orderID);
 
     void deleteOrder(Order order);
-
-    void updateOrder(Order order);
 
     List<Order> getAllOrders();
 
