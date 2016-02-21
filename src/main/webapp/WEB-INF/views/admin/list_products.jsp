@@ -5,6 +5,7 @@
     <title>List of products</title>
 </head>
 <body>
+123
     <legend>Options</legend>
     <c:if test="${not empty listProducts}">
         <table>
