@@ -12,7 +12,7 @@ public class Product implements Serializable {
     private Boolean isAvailable;
     private BigDecimal price;
 
-    protected Product() {
+    public Product() {
     }
 
     @Id

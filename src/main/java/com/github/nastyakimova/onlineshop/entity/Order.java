@@ -13,7 +13,7 @@ public class Order implements Serializable {
     private Boolean isPaid;
     private List<Product> productList = new ArrayList<>();
 
-    protected Order() {
+    public Order() {
     }
 
     @Id
