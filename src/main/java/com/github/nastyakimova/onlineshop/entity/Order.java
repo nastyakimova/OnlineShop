@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order implements Serializable {
     private Integer orderID;
     private Customer customer;
@@ -18,7 +18,7 @@ public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id", unique = true, nullable = false)
+    @Column(name = "orders_id", unique = true, nullable = false)
     public Integer getOrderID() {
         return orderID;
     }
@@ -46,8 +46,12 @@ public class Order implements Serializable {
         this.isPaid = isPaid;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "order")
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "orders_product",
+            joinColumns = @JoinColumn(name = "orders_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
     public List<Product> getProductList() {
         return productList;
     }
@@ -67,12 +71,12 @@ public class Order implements Serializable {
 
     @Override
     public int hashCode() {
-        return orderID^(orderID>>>32);
+        return orderID ^ (orderID >>> 32);
     }
 
     @Override
     public String toString() {
-        return "Order ¹" + orderID +
+        return "Order " + orderID +
                 ", customer=" + customer;
     }
 }

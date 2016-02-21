@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 @Table(name = "product")
 public class Product implements Serializable {
     private Integer productID;
-
     private String title;
     private Boolean isAvailable;
     private BigDecimal price;
