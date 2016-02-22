@@ -5,8 +5,9 @@
     <title>Create new product</title>
 </head>
 <body>
+<jsp:include page="menu.jsp"></jsp:include>
 <fieldset>
-    <legend>Create new product</legend>
+    <h1>Create new product</h1>
     <form:form method="post" action="/product/save" modelAttribute="product">
         <div><label for="title">Title</label>
             <form:input path="title" placeholder="Title"/>

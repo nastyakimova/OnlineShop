@@ -10,7 +10,8 @@
     </style>
 </head>
 <body>
-<legend>Orders</legend>
+<jsp:include page="menu.jsp"></jsp:include>
+<h1>Orders</h1>
 <c:if test="${not empty listOrders}">
     <table>
         <thead>

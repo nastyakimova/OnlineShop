@@ -10,7 +10,8 @@
     </style>
 </head>
 <body>
-<legend>Products</legend>
+<jsp:include page="menu.jsp"></jsp:include>
+<h1>Products</h1>
 <input type="button" onclick="location.href='/product/new'" value="Add Product">
 <br>
 <c:if test="${not empty listProducts}">
