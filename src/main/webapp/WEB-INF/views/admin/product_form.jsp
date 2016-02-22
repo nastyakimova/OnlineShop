@@ -8,13 +8,13 @@
 <fieldset>
     <legend>Create new product</legend>
     <form method="post" action="/product/save">
-        <p><input type="text" name="title" placeholder="Title"></p>
+        <p><input type="text" name="title" value="${product.title}" placeholder="Title"></p>
 
-        <p><input type="number" name="price" placeholder="Price ($)"></p>
-
-        <p><input type="submit" value="Create"></p>
+        <p><input type="number" name="price" value="${product.price}" placeholder="Price ($)"></p>
 
         <p><input type="hidden" value="productID"/></p>
+
+        <p><input type="submit" value="Save"></p>
     </form>
 </fieldset>
 </body>
