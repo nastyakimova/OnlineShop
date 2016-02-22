@@ -1,9 +1,40 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List of customers</title>
+  <title>List of customers</title>
+  <style type="text/css">
+    th {
+      text-align: left
+    }
+  </style>
 </head>
 <body>
-
+<legend>Customers</legend>
+<c:if test="${not empty listCustomers}">
+  <table>
+    <thead>
+    <tr>
+      <th>Order Id</th>
+      <th>Client</th>
+      <th>Total amount</th>
+      <th>Payment Status</th>
+      <th>> Add Customer to Blacklist</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${listOrders}" var="order">
+      <tr>
+        <td><c:out value="${order.orderID}"/></td>
+        <td><c:out value="${order.getCustomer}"/></td>
+        <td></td>
+        <td><c:out value="${order.isPaid}"/></td>
+        <td></td>
+      </tr>
+    </c:forEach>
+    </tbody>
+  </table>
+</c:if>
 </body>
+
 </html>

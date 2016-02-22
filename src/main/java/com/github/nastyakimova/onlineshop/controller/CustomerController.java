@@ -21,4 +21,9 @@ public class CustomerController {
         modelMap.addAttribute("customer", new Customer());
         return "customer_form";
     }
+    public String listCustomers(ModelMap modelMap) {
+        LOG.info("Received request to show all customers");
+        modelMap.addAttribute("listCustomers",customerService.getAllCustomers());
+        return "list_customers";
+    }
 }

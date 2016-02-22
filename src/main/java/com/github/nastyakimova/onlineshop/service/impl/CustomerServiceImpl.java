@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 
 @Service
 @Transactional
@@ -52,5 +54,12 @@ public class CustomerServiceImpl implements CustomerService {
             customerRepository.save(customer);
             LOG.info(customer + " was unlocked");
         }
+    }
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        List<Customer> customerList = customerRepository.findAll();
+        LOG.info("list of all customers was loaded from the database");
+        return customerList;
     }
 }

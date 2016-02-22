@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        List<Product> productList = (List<Product>) productRepository.findAll();
+        List<Product> productList = productRepository.findAll();
         LOG.info("list of all products was loaded from the database");
         return productList;
     }
