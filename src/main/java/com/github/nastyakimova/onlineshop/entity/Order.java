@@ -12,7 +12,6 @@ public class Order implements Serializable {
     private Customer customer;
     private Boolean isPaid;
     private List<Product> productList = new ArrayList<>();
-
     public Order() {
     }
 
