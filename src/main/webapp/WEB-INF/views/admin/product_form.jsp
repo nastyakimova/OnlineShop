@@ -6,20 +6,20 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
-<fieldset>
-    <h1>Create new product</h1>
-    <form:form method="post" action="/product/save" modelAttribute="product">
-        <div><label for="title">Title</label>
-            <form:input path="title" placeholder="Title"/>
-        </div>
+<h1>Create new product</h1>
+<form:form method="post" action="/product/save" modelAttribute="product">
+    <div><label for="title">Title</label>
+        <form:input path="title" placeholder="Title"/>
+    </div>
 
-        <div><label for="price">Price</label>
-            <form:input path="price" placeholder="Price ($)"/>
-        </div>
-        <div><input type="submit" value="Save"/></div>
-        <form:input path="productID" type="hidden"/>
+    <div><label for="price">Price</label>
+        <form:input path="price" placeholder="Price ($)"/>
+    </div>
+    <br>
 
-    </form:form>
-</fieldset>
+    <div><input type="submit" value="Save"/></div>
+    <form:input path="productID" type="hidden"/>
+</form:form>
+
 </body>
 </html>
