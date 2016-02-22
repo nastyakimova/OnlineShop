@@ -3,10 +3,15 @@
 <html>
 <head>
     <title>List of products</title>
+    <style type="text/css">
+        th {
+            text-align: left
+        }
+    </style>
 </head>
 <body>
 <legend>Products</legend>
-<input type="button"  onclick="location.href='/product/new'" value="Add Product" >
+<input type="button" onclick="location.href='/product/new'" value="Add Product">
 <br>
 <c:if test="${not empty listProducts}">
     <table>
@@ -24,7 +29,9 @@
             <td><c:out value="${product.price}"/></td>
             <td>
                 <nobr>
-                    <a href="delete/${product.productID}"
+                    <input type="button" onclick="location.href='/product/edit/${product.productID}'"
+                           value="Edit Product">
+                    <a href='/product/delete/${product.productID}'
                        onclick="return confirm('Are you sure you want to delete this client?');">Remove
                     </a>
                 </nobr>

@@ -53,6 +53,6 @@ public class ProductController {
         LOG.info("Received request to delete product");
         Product product = productService.getProductById(productID);
         productService.deleteProduct(product);
-        return "redirect:list_products";
+        return "redirect:/product/list_products";
     }
 }
