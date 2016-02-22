@@ -5,33 +5,34 @@
     <title>List of products</title>
 </head>
 <body>
-123
-    <legend>Options</legend>
-    <c:if test="${not empty listProducts}">
-        <table>
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="product" items="${listProducts}">
-            <tr>
-                <td><c:out value="${product.title}"/></td>
-                <td><c:out value="${product.price}"/></td>
-                <td>
-                    <nobr>
-                        <a href="delete/${product.productID}"
-                           onclick="return confirm('Are you sure you want to delete this client?');">Remove
-                        </a>
-                    </nobr>
-                </td>
-            </tr>
-            </tbody>
-            </c:forEach>
-        </table>
-    </c:if>
+<legend>Products</legend>
+<input type="button"  onclick="location.href='/product/new'" value="Add Product" >
+<br>
+<c:if test="${not empty listProducts}">
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="product" items="${listProducts}">
+        <tr>
+            <td><c:out value="${product.title}"/></td>
+            <td><c:out value="${product.price}"/></td>
+            <td>
+                <nobr>
+                    <a href="delete/${product.productID}"
+                       onclick="return confirm('Are you sure you want to delete this client?');">Remove
+                    </a>
+                </nobr>
+            </td>
+        </tr>
+        </tbody>
+        </c:forEach>
+    </table>
+</c:if>
 </body>
 </html>
