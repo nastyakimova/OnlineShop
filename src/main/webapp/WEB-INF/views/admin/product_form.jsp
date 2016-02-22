@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
     <title>Create new product</title>
@@ -7,15 +7,18 @@
 <body>
 <fieldset>
     <legend>Create new product</legend>
-    <form method="post" action="/product/save">
-        <p><input type="text" name="title" value="${product.title}" placeholder="Title"></p>
+    <form:form method="post" action="/product/save" modelAttribute="product">
+        <div><label for="title">Title</label>
+            <form:input path="title" placeholder="Title"/>
+        </div>
 
-        <p><input type="number" name="price" value="${product.price}" placeholder="Price ($)"></p>
+        <div><label for="price">Price</label>
+            <form:input path="price" placeholder="Price ($)"/>
+        </div>
+        <div><input type="submit" value="Save"/></div>
+        <form:input path="productID" type="hidden"/>
 
-        <p><input type="hidden" value="productID"/></p>
-
-        <p><input type="submit" value="Save"></p>
-    </form>
+    </form:form>
 </fieldset>
 </body>
 </html>

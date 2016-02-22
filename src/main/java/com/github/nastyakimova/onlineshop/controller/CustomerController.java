@@ -1,5 +1,6 @@
 package com.github.nastyakimova.onlineshop.controller;
 
+import com.github.nastyakimova.onlineshop.entity.Customer;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,5 +16,9 @@ public class CustomerController {
     CustomerService customerService;
 
     public static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ProductController.class);
-
+    public String newCustomer(ModelMap modelMap){
+        LOG.info("Received request to create a new product");
+        modelMap.addAttribute("customer", new Customer());
+        return "customer_form";
+    }
 }

@@ -32,7 +32,7 @@
                     <input type="button" onclick="location.href='/product/edit/${product.productID}'"
                            value="Edit Product">
                     <a href='/product/delete/${product.productID}'
-                       onclick="return confirm('Are you sure you want to delete this client?');">Remove
+                       onclick="return confirm('Are you sure you want to delete this product?');">Remove
                     </a>
                 </nobr>
             </td>
