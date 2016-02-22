@@ -3,7 +3,8 @@ package com.github.nastyakimova.onlineshop.service.impl;
 import com.github.nastyakimova.onlineshop.entity.Customer;
 import com.github.nastyakimova.onlineshop.repositories.CustomerRepository;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
-    public static final Logger LOG = Logger.getLogger(CustomerServiceImpl.class);
+    public static final Logger LOG = LoggerFactory.getLogger(CustomerServiceImpl.class);
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -41,15 +42,15 @@ public class CustomerServiceImpl implements CustomerService {
     public void lockCustomer(Customer customer) {
         customer.setIsLocked(true);
         customerRepository.save(customer);
-        LOG.info(customer+" was locked");
+        LOG.info(customer + " was locked");
     }
 
     @Override
     public void unlockCustomer(Customer customer) {
-        if (customer.getIsLocked()){
+        if (customer.getIsLocked()) {
             customer.setIsLocked(false);
             customerRepository.save(customer);
-            LOG.info(customer+" was unlocked");
+            LOG.info(customer + " was unlocked");
         }
     }
 }

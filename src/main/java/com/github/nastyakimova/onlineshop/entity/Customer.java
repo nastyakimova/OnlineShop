@@ -20,7 +20,6 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", unique = true, nullable = false)

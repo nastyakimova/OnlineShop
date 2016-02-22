@@ -5,7 +5,8 @@ import com.github.nastyakimova.onlineshop.entity.Order;
 import com.github.nastyakimova.onlineshop.entity.Product;
 import com.github.nastyakimova.onlineshop.repositories.OrderRepository;
 import com.github.nastyakimova.onlineshop.service.OrderService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,7 @@ import java.util.List;
 @Service
 @Transactional
 public class OrderServiceImpl implements OrderService {
-    public static final Logger LOG = Logger.getLogger(OrderServiceImpl.class);
+    public static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
     OrderRepository orderRepository;

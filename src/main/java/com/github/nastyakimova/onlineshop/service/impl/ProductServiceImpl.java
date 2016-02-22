@@ -3,7 +3,8 @@ package com.github.nastyakimova.onlineshop.service.impl;
 import com.github.nastyakimova.onlineshop.entity.Product;
 import com.github.nastyakimova.onlineshop.repositories.ProductRepository;
 import com.github.nastyakimova.onlineshop.service.ProductService;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {
-    public static final Logger LOG = Logger.getLogger(OrderServiceImpl.class);
+    public static final Logger LOG = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
     ProductRepository productRepository;

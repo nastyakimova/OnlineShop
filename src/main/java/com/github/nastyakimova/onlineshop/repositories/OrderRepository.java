@@ -2,6 +2,8 @@ package com.github.nastyakimova.onlineshop.repositories;
 
 import com.github.nastyakimova.onlineshop.entity.Order;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface OrderRepository extends CrudRepository<Order,Integer> {
+@Repository
+public interface OrderRepository extends CrudRepository<Order, Integer> {
 }
