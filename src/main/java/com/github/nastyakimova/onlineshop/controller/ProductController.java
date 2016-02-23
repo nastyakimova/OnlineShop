@@ -27,6 +27,12 @@ public class ProductController {
         return "list_products";
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String showProducts(ModelMap modelMap) {
+        modelMap.addAttribute("listProducts", productService.getAllProducts());
+        return "all_products";
+    }
+
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newProduct(ModelMap modelMap) {
         LOG.info("Received request to create a new product");

@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
-<h1>Orders</h1>
+<h3>Orders</h3>
 <c:if test="${not empty listOrders}">
     <table>
         <thead>

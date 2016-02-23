@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
-<h1>Products</h1>
+<h3>Products</h3>
 <input type="button" onclick="location.href='/product/new'" value="Add Product">
 <br>
 <c:if test="${not empty listProducts}">
