@@ -28,7 +28,7 @@ public class CustomerController {
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         LOG.info("Received request to save a customer");
         customerService.saveCustomer(customer);
-        return "redirect:list_customers";
+        return "redirect:/product/";
     }
 
     @RequestMapping(value = "/list_customers")

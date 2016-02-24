@@ -1,10 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <link rel="stylesheet"
           href='<c:url value="/resources/css/bootstrap.min.css"/>'>
     <link rel="stylesheet"
@@ -28,7 +32,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="<c:url value="/product/list_products"/>">Products</a></li>
                 <li><a href="<c:url value="/order/list_orders"/>">Orders</a></li>
-                <li><a href="<c:url value=""/>">Customers</a></li>
+                <li><a href="<c:url value="/customer/list_customers"/>">Customers</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="<c:url value="/product/"/>">Exit</a></li>
             </ul>
         </div>
     </div>

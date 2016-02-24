@@ -5,6 +5,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
     <link rel="stylesheet"
           href='<c:url value="/resources/css/bootstrap.min.css"/>'>
     <link rel="stylesheet"
@@ -20,15 +24,18 @@
 <body>
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<c:url value=""/>">Sign in</a></li>
+                <li><a href="<c:url value="/customer/new"/>">Register</a></li>
+            </ul>
+        </div>
+    </div>
 
-    <ul class="nav navbar-right">
-        <li><a href="<c:url value=""/>">Sign in</a></li>
-    </ul>
     <button type="button" class="btn">
-        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-shopping-cart glyphicon-right" aria-hidden="true"></span>
     </button>
-
-
 </nav>
 </body>
 </html>
