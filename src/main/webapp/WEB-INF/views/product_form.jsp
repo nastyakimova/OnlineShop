@@ -17,7 +17,9 @@
     </div>
     <br>
     <tr>
-        <td colspan="2"><input type="submit" value="Save"/>
+        <td colspan="2">
+            <input type="button" onclick="location.href='/product/list_products'" value="Cancel" />
+            <input type="submit" value="Save"/>
         </td>
     </tr>
     <form:input path="productID" type="hidden"/>

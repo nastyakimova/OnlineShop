@@ -27,15 +27,15 @@
     <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="<c:url value="/customer/new"/>">Join</a></li>
                 <li><a href="<c:url value=""/>">Sign in</a></li>
-                <li><a href="<c:url value="/customer/new"/>">Register</a></li>
+                <li><a href="<c:url value="/cart/addProducts"/>">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                </a>
+                </li>
             </ul>
         </div>
     </div>
-
-    <button type="button" class="btn">
-        <span class="glyphicon glyphicon-shopping-cart glyphicon-right" aria-hidden="true"></span>
-    </button>
 </nav>
 </body>
 </html>

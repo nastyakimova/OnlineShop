@@ -15,6 +15,7 @@ public class Customer implements Serializable {
     private String email;
     private String password;
     private Boolean isLocked;
+    private String creditCardNumber;
     List<Order> orderList = new ArrayList<>();
 
     public Customer() {
@@ -83,6 +84,15 @@ public class Customer implements Serializable {
 
     public void setIsLocked(Boolean isLocked) {
         this.isLocked = isLocked;
+    }
+
+    @Column(name = "credit_card_number")
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 
     @Override

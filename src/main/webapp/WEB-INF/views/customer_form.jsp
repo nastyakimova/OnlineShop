@@ -10,7 +10,6 @@
     <div><label for="name">Name</label>
         <form:input path="name" placeholder="Name"/>
     </div>
-
     <div><label for="surname">Surname</label>
         <form:input path="surname" placeholder="Surname"/>
     </div>
@@ -24,6 +23,7 @@
     <form:input path="customerID" type="hidden"/>
     <tr>
         <td colspan="2">
+            <input type="button" value="Cancel"/>
             <input type="submit" value="Save"/>
         </td>
     </tr>

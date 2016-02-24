@@ -30,7 +30,7 @@ public class ProductController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showProducts(ModelMap modelMap) {
         modelMap.addAttribute("listProducts", productService.getAllProducts());
-        return "all_products";
+        return "home";
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
