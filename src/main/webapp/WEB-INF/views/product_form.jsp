@@ -16,8 +16,10 @@
         <form:input path="price" placeholder="Price ($)"/>
     </div>
     <br>
-
-    <div><input type="submit" value="Save"/></div>
+    <tr>
+        <td colspan="2"><input type="submit" value="Save"/>
+        </td>
+    </tr>
     <form:input path="productID" type="hidden"/>
 </form:form>
 

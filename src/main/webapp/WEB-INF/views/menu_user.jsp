@@ -20,10 +20,14 @@
 <body>
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
-        <button type="button" class="btn btn-default navbar-btn">Sign in</button>
-    <button type="button" class="btn btn-default" aria-label="Right Align">
+
+    <ul class="nav navbar-right">
+        <li><a href="<c:url value=""/>">Sign in</a></li>
+    </ul>
+    <button type="button" class="btn">
         <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
     </button>
+
 
 </nav>
 </body>
