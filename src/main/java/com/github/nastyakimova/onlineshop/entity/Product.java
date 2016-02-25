@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 public class Product implements Serializable {
     private Integer productID;
     private String title;
-    private Boolean isAvailable;
     private BigDecimal price;
 
     public Product() {
@@ -33,15 +32,6 @@ public class Product implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    @Column(name = "is_available")
-    public Boolean getIsAvailable() {
-        return isAvailable;
-    }
-
-    public void setIsAvailable(Boolean isAvailable) {
-        this.isAvailable = isAvailable;
     }
 
     @Column(name = "price")
