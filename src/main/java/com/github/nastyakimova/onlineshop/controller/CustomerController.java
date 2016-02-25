@@ -17,21 +17,21 @@ public class CustomerController {
 
     public static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ProductController.class);
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    @RequestMapping(value = "new", method = RequestMethod.GET)
     public String newCustomer(ModelMap modelMap) {
         LOG.info("Received request to create a new product");
         modelMap.addAttribute("customer", new Customer());
         return "customer_form";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "save", method = RequestMethod.POST)
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         LOG.info("Received request to save a customer");
         customerService.saveCustomer(customer);
         return "redirect:/product/";
     }
 
-    @RequestMapping(value = "/list_customers")
+    @RequestMapping(value = "list_customers")
     public String listCustomers(ModelMap modelMap) {
         LOG.info("Received request to show all customers");
         modelMap.addAttribute("listCustomers", customerService.getAllCustomers());

@@ -16,10 +16,21 @@ public class OrderController {
 
     public static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ProductController.class);
 
-    @RequestMapping(value = "/list_orders", method = RequestMethod.GET)
+    @RequestMapping(value = "list_orders", method = RequestMethod.GET)
     public String listOrders(ModelMap modelMap) {
         LOG.info("Received request to show all orders");
         modelMap.addAttribute("listOrders",orderService.getAllOrders());
         return "list_orders";
     }
+
+   /* @RequestMapping(value = "create_order",method = RequestMethod.POST)
+    public String createOrder(@ModelAttribute("orderID") int orderID,
+                              @RequestParam("productIds") int[] productIds){
+        LOG.info("Received request to create new order");
+        List<Product> products=new ArrayList<>();
+                Order order=new Order();
+        for(int id:productIds) {
+            products.add()
+        }
+    }*/
 }
