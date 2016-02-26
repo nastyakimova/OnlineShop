@@ -30,13 +30,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="<c:url value="/product/list_products"/>">Products</a></li>
-                <li><a href="<c:url value="/order/list_orders"/>">Orders</a></li>
-                <li><a href="<c:url value="/customer/list_customers"/>">Customers</a></li>
+                <li><a href="<c:url value="/admin/product/list_products"/>">Products</a></li>
+                <li><a href="<c:url value="/admin/list_orders"/>">Orders</a></li>
+                <li><a href="<c:url value="/admin/list_customers"/>">Customers</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<c:url value="/product/"/>">Exit</a></li>
+                    <a href="<c:url value="/"/>">Exit</a></li>
             </ul>
         </div>
     </div>

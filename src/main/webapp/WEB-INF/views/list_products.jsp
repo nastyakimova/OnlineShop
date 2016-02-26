@@ -12,7 +12,7 @@
 <body>
 <jsp:include page="menu.jsp"></jsp:include>
 <h3>Products</h3>
-<input type="button" onclick="location.href='/product/new'" value="Add Product">
+<input type="button" onclick="location.href='/admin/product/new'" value="Add Product">
 <br>
 <c:if test="${not empty listProducts}">
     <table>
@@ -30,9 +30,9 @@
             <td><c:out value="${product.price}"/></td>
             <td>
                 <nobr>
-                    <input type="button" onclick="location.href='/product/edit/${product.productID}'"
+                    <input type="button" onclick="location.href='/admin/product/edit/${product.productID}'"
                            value="Edit Product">
-                    <a href='/product/delete/${product.productID}'
+                    <a href='/admin/product/delete/${product.productID}'
                        onclick="return confirm('Are you sure you want to delete this product?');">Remove
                     </a>
                 </nobr>

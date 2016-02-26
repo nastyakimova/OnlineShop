@@ -10,7 +10,7 @@ public class User {
     private Integer userID;
     private String username;
     private String password;
-    private Set<UserRole> userRole = new HashSet<UserRole>();
+    private Set<UserRole> userRole = new HashSet<>();
 
     public User() {
     }

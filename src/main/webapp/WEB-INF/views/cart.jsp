@@ -9,7 +9,7 @@
 <body>
 <h3>Your Shopping Cart</h3>
 <c:if test="${not empty cart}">
-    <form:form action="/order/create_order" method="post">
+    <form:form action="/create_order" method="post">
         <table>
             <thead>
             <tr>
@@ -35,7 +35,7 @@
             </c:forEach>
         </table>
     </form:form>
-    <input type="button" onclick="location.href='/order/create_order'" value="Buy it now">
+    <input type="button" onclick="location.href='/create_order'" value="Buy it now">
 </c:if>
 </body>
 </html>
