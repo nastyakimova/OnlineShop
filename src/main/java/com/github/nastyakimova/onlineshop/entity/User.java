@@ -7,6 +7,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
+    private Integer userID;
     private String username;
     private String password;
     private Set<UserRole> userRole = new HashSet<UserRole>();
@@ -15,6 +16,16 @@ public class User {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id", unique = true, nullable = false)
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
+
     @Column(name = "username", unique = true,
             nullable = false, length = 30)
     public String getUsername() {

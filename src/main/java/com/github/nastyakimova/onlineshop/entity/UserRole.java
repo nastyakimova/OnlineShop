@@ -24,7 +24,7 @@ public class UserRole {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "userID")
     public User getUser() {
         return user;
     }
