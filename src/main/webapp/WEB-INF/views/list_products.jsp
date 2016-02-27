@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="menu.jsp"></jsp:include>
+<jsp:include page="menu_admin.jsp"></jsp:include>
 <h3>Products</h3>
 <input type="button" onclick="location.href='/admin/product/new'" value="Add Product">
 <br>

@@ -5,7 +5,7 @@
     <title>Create new product</title>
 </head>
 <body>
-<jsp:include page="menu.jsp"></jsp:include>
+<jsp:include page="menu_admin.jsp"></jsp:include>
 <h1>Create new product</h1>
 <form:form method="post" action="/admin/product/save" modelAttribute="product">
     <div><label for="title">Title</label>
