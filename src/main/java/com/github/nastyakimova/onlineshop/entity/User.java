@@ -43,7 +43,7 @@ public class User {
         this.enabled = enabled;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "username")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     public Set<Authority> getAuthorities() {
         return authorities;
     }
