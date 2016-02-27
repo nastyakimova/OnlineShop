@@ -10,7 +10,7 @@ public class User {
     private String username;
     private String password;
     private boolean enabled;
-    private Set<Authorities> authorities = new HashSet<>();
+    private Set<Authority> authorities = new HashSet<>();
 
     public User() {
     }
@@ -43,12 +43,12 @@ public class User {
         this.enabled = enabled;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-    public Set<Authorities> getAuthorities() {
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "username")
+    public Set<Authority> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<Authorities> authorities) {
+    public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
     }
 

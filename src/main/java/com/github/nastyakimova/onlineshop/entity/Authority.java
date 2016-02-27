@@ -4,21 +4,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "authorities")
-public class Authorities {
-    private User user;
+public class Authority {
+    private String username;
     private String authority;
 
-    public Authorities() {
+    public Authority() {
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "username",nullable = false)
-    public User getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 
@@ -29,4 +29,5 @@ public class Authorities {
     public void setAuthority(String authority) {
         this.authority = authority;
     }
+
 }
