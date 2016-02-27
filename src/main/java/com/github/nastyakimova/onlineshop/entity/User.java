@@ -7,27 +7,17 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class User {
-    private Integer userID;
     private String username;
     private String password;
-    private Set<UserRole> userRole = new HashSet<>();
+    private boolean enabled;
+    private Set<Authorities> authorities = new HashSet<>();
 
     public User() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", unique = true, nullable = false)
-    public Integer getUserID() {
-        return userID;
-    }
-
-    public void setUserID(Integer userID) {
-        this.userID = userID;
-    }
-
     @Column(name = "username", unique = true,
-            nullable = false, length = 30)
+            nullable = false, length = 50)
     public String getUsername() {
         return username;
     }
@@ -36,7 +26,7 @@ public class User {
         this.username = username;
     }
 
-    @Column(name = "password", unique = true, nullable = false)
+    @Column(name = "password", nullable = false, length = 50)
     public String getPassword() {
         return password;
     }
@@ -45,12 +35,23 @@ public class User {
         this.password = password;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
-    public Set<UserRole> getUserRole() {
-        return userRole;
+    @Column(name = "enabled",nullable = false)
+    public boolean isEnabled() {
+        return enabled;
+    }
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    public Set<Authorities> getAuthorities() {
+        return authorities;
     }
+
+    public void setAuthorities(Set<Authorities> authorities) {
+        this.authorities = authorities;
+    }
+
+
+
 }
