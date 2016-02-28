@@ -26,7 +26,7 @@ public class ProductController {
         return "list_products";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String showProducts(ModelMap modelMap) {
         modelMap.addAttribute("listProducts", productService.getAllProducts());
         return "home";

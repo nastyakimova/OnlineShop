@@ -34,7 +34,7 @@ public class CartController {
         Product product = productService.getProductById(productID);
         LOG.info("Received request to add " + product + " to cart");
         shoppingCart.addProduct(product);
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "delete/{productID}", method = RequestMethod.GET)

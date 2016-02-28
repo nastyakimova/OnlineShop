@@ -46,8 +46,16 @@ public class OrderController {
         for (int id : productIds) {
             products.add(productService.getProductById(id));
         }
-        Customer customer=user.getCustomer();
-        orderService.createOrder(customer,new Order(),products);
+        Customer customer = user.getCustomer();
+        orderService.createOrder(customer, new Order(), products);
         return "payment";
+    }
+
+    @RequestMapping(value = "/admin/lock_customer/{orderID}", method = RequestMethod.POST)
+    public String lockCustomer(@PathVariable int orderID) {
+        Order order = orderService.getOrderById(orderID);
+        LOG.info("Received request to add order`s " + order + " owner to blacklist");
+        customerService.lockCustomer(order.getCustomer());
+        return "redirect:/admin/list_orders";
     }
 }

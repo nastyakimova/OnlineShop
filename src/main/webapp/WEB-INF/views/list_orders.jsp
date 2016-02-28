@@ -30,7 +30,10 @@
                 <td><c:out value="${order.getCustomer}"/></td>
                 <td></td>
                 <td><c:out value="${order.isPaid}"/></td>
-                <td></td>
+                <td colspan="2">
+                <input type="button" onclick="location.href='/admin/lock_customer/${order.orderID}'"
+                       value="Lock Customer" />
+            </td>
             </tr>
         </c:forEach>
         </tbody>
