@@ -40,22 +40,32 @@ public class OrderController {
 
     @RequestMapping(value = "/order/create", method = RequestMethod.POST)
     public String createOrder(@AuthenticationPrincipal User user,
-                              @RequestParam("productIds") int[] productIds) {
+                              @RequestParam("productIds") Integer[] productIds) {
         LOG.info("Received request to create new order");
+        Customer customer = user.getCustomer();
+        if (!customer.getIsLocked()){
         List<Product> products = new ArrayList<>();
         for (int id : productIds) {
             products.add(productService.getProductById(id));
         }
-        Customer customer = user.getCustomer();
         orderService.createOrder(customer, new Order(), products);
-        return "payment";
+        return "payment";}
+        else return "redirect:/home";
     }
 
     @RequestMapping(value = "/admin/lock_customer/{orderID}", method = RequestMethod.POST)
-    public String lockCustomer(@PathVariable int orderID) {
+    public String lockCustomer(@PathVariable Integer orderID) {
         Order order = orderService.getOrderById(orderID);
         LOG.info("Received request to add order`s " + order + " owner to blacklist");
         customerService.lockCustomer(order.getCustomer());
+        return "redirect:/admin/list_orders";
+    }
+
+    @RequestMapping(value = "/admin/unlock_customer/{orderID}",method = RequestMethod.POST)
+    public String unlockCustomer(@PathVariable Integer orderID){
+        Order order=orderService.getOrderById(orderID);
+        LOG.info("Received request to remove order`s " + order + " owner from blacklist");
+        customerService.unlockCustomer(order.getCustomer());
         return "redirect:/admin/list_orders";
     }
 }
