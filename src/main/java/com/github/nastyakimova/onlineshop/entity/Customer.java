@@ -12,7 +12,6 @@ public class Customer implements Serializable {
     private Integer customerID;
     private String name;
     private String surname;
-    private String username;
     private String password;
     private String email;
     private Boolean isLocked;
@@ -61,16 +60,6 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    @Column(name = "username", unique = true,
-            nullable = false, length = 50)
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @Column(name = "password",nullable = false, length = 50)
     public String getPassword() {
         return password;
@@ -106,7 +95,7 @@ public class Customer implements Serializable {
         this.creditCardNumber = creditCardNumber;
     }
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
+   /* @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")*/
     public User getUser() {
         return user;
     }

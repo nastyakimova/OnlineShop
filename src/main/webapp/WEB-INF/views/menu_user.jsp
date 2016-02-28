@@ -30,14 +30,19 @@
             <ul class="nav navbar-nav navbar-right">
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="<c:url value="/login"/>">Sign in</a></li>
-                </sec:authorize><li><a href="<c:url value="/customer/new"/>">Join</a></li>
-                <sec:authorize access="!isAuthenticated()">
-                    <li><a href="<c:url value="/login"/>">Sign in</a></li>
                 </sec:authorize>
-                <li><a href="<c:url value="/cart/get"/>">
-                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                </a>
-                </li>
+                <sec:authorize access="isAuthenticated()">
+                <form action="<c:url value="/logout"/>" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <input type="submit" value="Logout"/>
+                    </sec:authorize>
+                    <sec:authorize access="!isAuthenticated()">
+                    <li><a href="<c:url value="/customer/new"/>">Join</a></li>
+                    </sec:authorize>
+                    <li><a href="<c:url value="/cart/get"/>">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                    </a>
+                    </li>
             </ul>
         </div>
     </div>

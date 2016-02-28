@@ -53,8 +53,8 @@ public class User {
         this.authorities = authorities;
     }
 
-    @OneToOne
-    @JoinColumn(name = "username")
+ /*   @OneToOne
+    @JoinColumn(name = "username")*/
     public Customer getCustomer() {
         return customer;
     }
