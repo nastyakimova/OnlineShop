@@ -43,7 +43,7 @@ public class ProductController {
     public String saveProduct(@ModelAttribute("product") Product product) {
         LOG.info("Received request to save a product");
         productService.saveProduct(product);
-        return "redirect:admin/list_products";
+        return "redirect:/admin/list_products";
     }
 
     @RequestMapping(value = "/admin/product/edit/{productID}", method = RequestMethod.GET)

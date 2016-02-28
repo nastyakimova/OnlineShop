@@ -1,12 +1,15 @@
 package com.github.nastyakimova.onlineshop.controller;
 
 
+import com.github.nastyakimova.onlineshop.entity.Customer;
 import com.github.nastyakimova.onlineshop.entity.Order;
 import com.github.nastyakimova.onlineshop.entity.Product;
+import com.github.nastyakimova.onlineshop.entity.User;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
 import com.github.nastyakimova.onlineshop.service.OrderService;
 import com.github.nastyakimova.onlineshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,14 +38,16 @@ public class OrderController {
         return "list_orders";
     }
 
-    @RequestMapping(value = "/admin/order/create", method = RequestMethod.POST)
-    public String createOrder(@RequestParam("productIds") int[] productIds, @PathVariable int customerID) {
+    @RequestMapping(value = "/order/create", method = RequestMethod.POST)
+    public String createOrder(@AuthenticationPrincipal User user,
+                              @RequestParam("productIds") int[] productIds) {
         LOG.info("Received request to create new order");
         List<Product> products = new ArrayList<>();
         for (int id : productIds) {
             products.add(productService.getProductById(id));
         }
-        orderService.createOrder(customerService.getCustomerById(customerID),new Order(),products);
+        Customer customer=user.getCustomer();
+        orderService.createOrder(customer,new Order(),products);
         return "payment";
     }
 }

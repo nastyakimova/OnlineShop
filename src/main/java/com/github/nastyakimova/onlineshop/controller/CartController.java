@@ -1,8 +1,8 @@
 package com.github.nastyakimova.onlineshop.controller;
 
 import com.github.nastyakimova.onlineshop.entity.Product;
-import com.github.nastyakimova.onlineshop.service.entity.ShoppingCart;
 import com.github.nastyakimova.onlineshop.service.ProductService;
+import com.github.nastyakimova.onlineshop.service.entity.ShoppingCart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class CartController {
         Product product = productService.getProductById(productID);
         LOG.info("Received request to add " + product + " to cart");
         shoppingCart.addProduct(product);
-        return "redirect:/product/";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "delete/{productID}", method = RequestMethod.GET)

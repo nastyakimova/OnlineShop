@@ -11,6 +11,7 @@ public class User {
     private String password;
     private boolean enabled;
     private Set<Authority> authorities = new HashSet<>();
+    private Customer customer;
 
     public User() {
     }
@@ -52,6 +53,13 @@ public class User {
         this.authorities = authorities;
     }
 
+    @OneToOne
+    @JoinColumn(name = "username")
+    public Customer getCustomer() {
+        return customer;
+    }
 
-
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

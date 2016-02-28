@@ -12,11 +12,12 @@ public class Customer implements Serializable {
     private Integer customerID;
     private String name;
     private String surname;
+    private String username;
     private String email;
-    private String password;
     private Boolean isLocked;
     private String creditCardNumber;
     List<Order> orderList = new ArrayList<>();
+    private User user;
 
     public Customer() {
     }
@@ -59,13 +60,14 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    @Column(name = "password")
-    public String getPassword() {
-        return password;
+    @Column(name = "username", unique = true,
+            nullable = false, length = 50)
+    public String getUsername() {
+        return username;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
@@ -95,6 +97,15 @@ public class Customer implements Serializable {
         this.creditCardNumber = creditCardNumber;
     }
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Customer " + name + " " + surname;
@@ -116,5 +127,4 @@ public class Customer implements Serializable {
     public int hashCode() {
         return customerID ^ (customerID >>> 32);
     }
-
 }
