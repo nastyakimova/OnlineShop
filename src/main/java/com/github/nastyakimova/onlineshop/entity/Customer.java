@@ -13,6 +13,7 @@ public class Customer implements Serializable {
     private String name;
     private String surname;
     private String username;
+    private String password;
     private String email;
     private Boolean isLocked;
     private String creditCardNumber;
@@ -68,6 +69,14 @@ public class Customer implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Column(name = "password",nullable = false, length = 50)
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
@@ -127,4 +136,6 @@ public class Customer implements Serializable {
     public int hashCode() {
         return customerID ^ (customerID >>> 32);
     }
+
+
 }

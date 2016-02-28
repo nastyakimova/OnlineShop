@@ -28,7 +28,9 @@
     <div class="container">
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<c:url value="/customer/new"/>">Join</a></li>
+                <sec:authorize access="!isAuthenticated()">
+                    <li><a href="<c:url value="/login"/>">Sign in</a></li>
+                </sec:authorize><li><a href="<c:url value="/customer/new"/>">Join</a></li>
                 <sec:authorize access="!isAuthenticated()">
                     <li><a href="<c:url value="/login"/>">Sign in</a></li>
                 </sec:authorize>

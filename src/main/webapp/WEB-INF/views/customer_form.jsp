@@ -16,6 +16,9 @@
     <div><label for="email">E-mail</label>
         <form:input path="email" placeholder="E-mail"/>
     </div>
+    <div><label for="username">Username</label>
+        <form:input path="username" placeholder="Username"/>
+    </div>
     <div><label for="password">Password</label>
         <form:input path="password" placeholder="Password"/>
     </div>
