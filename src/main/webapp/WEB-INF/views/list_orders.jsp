@@ -34,14 +34,16 @@
                 <td><c:out value="${order.isPaid}"/></td>
                 <td colspan="2">
                     <c:if test="${order.customer.isLocked eq 'false'}">
-                        <input type="button"
-                               onclick="location.href='/admin/lock_customer/${order.orderID}&action=lock'"
-                               value="Lock Customer"/>
+                        <button type="button"
+                                onclick="location.href='/admin/lock_customer/${order.orderID}&action=lock'"
+                                class="btn btn-default">Lock Customer
+                        </button>
                     </c:if>
                     <c:if test="${order.customer.isLocked eq 'true'}">
-                        <input type="button"
-                               onclick="location.href='/admin/lock_customer/${order.orderID}&action=unlock'"
-                               value="Unlock Customer"/>
+                        <button type="button"
+                                onclick="location.href='/admin/lock_customer/${order.orderID}&action=unlock'"
+                                class="btn btn-default">Unlock Customer
+                        </button>
                     </c:if>
                 </td>
             </tr>

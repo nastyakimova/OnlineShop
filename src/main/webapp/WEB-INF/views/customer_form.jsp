@@ -5,7 +5,9 @@
     <title>Registration form</title>
 </head>
 <body>
-<h1>Join</h1>
+<div class="page-header">
+    <h3>Join</h3>
+</div>
 <form:form method="post" action="/customer/save" modelAttribute="customer">
     <div><label for="name">Name</label>
         <form:input path="name" placeholder="Name"/>
@@ -23,8 +25,8 @@
     <form:input path="customerID" type="hidden"/>
     <tr>
         <td colspan="2">
-            <input type="button" value="Cancel"/>
-            <input type="submit" value="Save"/>
+            <button type="button" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-default">Save</button>
         </td>
     </tr>
 </form:form>

@@ -5,9 +5,13 @@
 <html>
 <head>
     <title>Shopping Cart</title>
+    <link rel="stylesheet"
+          href='<c:url value="/resources/css/bootstrap.min.css"/>'>
 </head>
 <body>
-<h3>Your Shopping Cart</h3>
+<div class="page-header">
+    <h3>Your Shopping Cart</h3>
+</div>
 <c:if test="${not empty cart}">
     <c:url var="actionUrl" value="/order/create"/>
     <form:form action="${actionUrl}" method="post">
@@ -35,7 +39,7 @@
             </tbody>
             </c:forEach>
         </table>
-        <input type="submit"  value="Buy it now">
+        <button type="submit" class="btn btn-default">Buy it now</button>
     </form:form>
 </c:if>
 </body>

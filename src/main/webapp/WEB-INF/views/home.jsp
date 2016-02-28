@@ -28,8 +28,10 @@
         <tr>
             <td><c:out value="${product.title}"/></td>
             <td><c:out value="${product.price}"/></td>
-            <td><input type="button" onclick="location.href='/cart/addProductToCart/${product.productID}'"
-                       value="Add To Cart">
+            <td>
+                <button type="button" onclick="location.href='/cart/addProductToCart/${product.productID}'"
+                        class="btn btn-default"> Add To Cart
+                </button>
             </td>
         </tr>
         </tbody>
