@@ -27,13 +27,21 @@
         <c:forEach items="${listOrders}" var="order">
             <tr>
                 <td><c:out value="${order.orderID}"/></td>
-                <td><c:out value="${order.getCustomer}"/></td>
+                <td><c:out value="${order.customer.name}"/></td>
                 <td></td>
                 <td><c:out value="${order.isPaid}"/></td>
                 <td colspan="2">
-                <input type="button" onclick="location.href='/admin/lock_customer/${order.orderID}'"
-                       value="Lock Customer" />
-            </td>
+                    <c:if test="${order.customer.isLocked eq 'false'}">
+                        <input type="button"
+                               onclick="location.href='/admin/lock_customer/${order.orderID}&action=lock'"
+                               value="Lock Customer"/>
+                    </c:if>
+                    <c:if test="${order.customer.isLocked eq 'true'}">
+                        <input type="button"
+                               onclick="location.href='/admin/lock_customer/${order.orderID}&action=unlock'"
+                               value="Unlock Customer"/>
+                    </c:if>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

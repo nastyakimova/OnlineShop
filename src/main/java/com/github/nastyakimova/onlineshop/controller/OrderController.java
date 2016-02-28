@@ -43,29 +43,29 @@ public class OrderController {
                               @RequestParam("productIds") Integer[] productIds) {
         LOG.info("Received request to create new order");
         Customer customer = user.getCustomer();
-        if (!customer.getIsLocked()){
-        List<Product> products = new ArrayList<>();
-        for (int id : productIds) {
-            products.add(productService.getProductById(id));
-        }
-        orderService.createOrder(customer, new Order(), products);
-        return "payment";}
-        else return "redirect:/home";
+        if (!customer.getIsLocked()) {
+            List<Product> products = new ArrayList<>();
+            for (int id : productIds) {
+                products.add(productService.getProductById(id));
+            }
+            orderService.createOrder(customer, new Order(), products);
+            return "payment";
+        } else return "redirect:/home";
     }
 
-    @RequestMapping(value = "/admin/lock_customer/{orderID}", method = RequestMethod.POST)
-    public String lockCustomer(@PathVariable Integer orderID) {
+    @RequestMapping(value = "/admin/lock_customer/{orderID}&action={action}",
+            method = RequestMethod.POST)
+    public String lockCustomer(@PathVariable Integer orderID,
+                               @PathVariable("action") String action) {
         Order order = orderService.getOrderById(orderID);
-        LOG.info("Received request to add order`s " + order + " owner to blacklist");
-        customerService.lockCustomer(order.getCustomer());
+        if (action.equals("lock")) {
+            LOG.info("Received request to add order`s " + order + " owner to blacklist");
+            customerService.lockCustomer(order.getCustomer());
+        } else {
+            LOG.info("Received request to remove order`s " + order + " owner from blacklist");
+            customerService.unlockCustomer(order.getCustomer());
+        }
         return "redirect:/admin/list_orders";
     }
 
-    @RequestMapping(value = "/admin/unlock_customer/{orderID}",method = RequestMethod.POST)
-    public String unlockCustomer(@PathVariable Integer orderID){
-        Order order=orderService.getOrderById(orderID);
-        LOG.info("Received request to remove order`s " + order + " owner from blacklist");
-        customerService.unlockCustomer(order.getCustomer());
-        return "redirect:/admin/list_orders";
-    }
 }
