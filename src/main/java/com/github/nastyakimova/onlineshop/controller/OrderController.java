@@ -38,7 +38,7 @@ public class OrderController {
         return "list_orders";
     }
 
-    @RequestMapping(value = "/order/create", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/order/create", method = RequestMethod.POST)
     public String createOrder(@AuthenticationPrincipal User user,
                               @RequestParam("productIds") Integer[] productIds) {
         LOG.info("Received request to create new order");
@@ -51,7 +51,7 @@ public class OrderController {
             orderService.createOrder(customer, new Order(), products);
             return "payment";
         } else return "redirect:/home";
-    }
+    }*/
 
     @RequestMapping(value = "/admin/lock_customer/{orderID}&action={action}",
             method = RequestMethod.POST)

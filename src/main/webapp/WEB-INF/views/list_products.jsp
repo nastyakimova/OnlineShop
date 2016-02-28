@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>List of products</title>
@@ -11,12 +12,16 @@
 </head>
 <body>
 <jsp:include page="menu_admin.jsp"></jsp:include>
-<h3>Products</h3>
-<input type="button" onclick="location.href='/admin/product/new'" value="Add Product">
+<div class="page-header">
+    <h3>Products</h3>
+</div>
+<button type="button" onclick="location.href='/admin/product/new'" class="btn btn-default">
+    Add Product
+</button>
 <br>
 <c:if test="${not empty listProducts}">
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-default">
         <tr>
             <th>Title</th>
             <th>Price</th>
@@ -30,8 +35,9 @@
             <td><c:out value="${product.price}"/></td>
             <td>
                 <nobr>
-                    <input type="button" onclick="location.href='/admin/product/edit/${product.productID}'"
-                           value="Edit Product">
+                    <button type="button" onclick="location.href='/admin/product/edit/${product.productID}'"
+                            class="btn btn-default">Edit Product
+                    </button>
                     <a href='/admin/product/delete/${product.productID}'
                        onclick="return confirm('Are you sure you want to delete this product?');">Remove
                     </a>

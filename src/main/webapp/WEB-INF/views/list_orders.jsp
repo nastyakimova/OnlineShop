@@ -11,16 +11,18 @@
 </head>
 <body>
 <jsp:include page="menu_admin.jsp"></jsp:include>
-<h3>Orders</h3>
+<div class="page-header">
+    <h3>Orders</h3>
+</div>
 <c:if test="${not empty listOrders}">
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-default">
         <tr>
             <th>Order Id</th>
             <th>Client</th>
             <th>Total amount</th>
             <th>Payment Status</th>
-            <th>> Add Customer to Blacklist</th>
+            <th> Add Customer to Blacklist</th>
         </tr>
         </thead>
         <tbody>

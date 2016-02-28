@@ -95,14 +95,14 @@ public class Customer implements Serializable {
         this.creditCardNumber = creditCardNumber;
     }
 
-   /* @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")*/
+/*    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
+    }*/
 
     @Override
     public String toString() {

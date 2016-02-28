@@ -6,9 +6,12 @@
 </head>
 <body>
 <jsp:include page="menu_admin.jsp"></jsp:include>
-<h1>Create new product</h1>
+<div class="page-header">
+    <h3>Create new product</h3>
+</div>
 <form:form method="post" action="/admin/product/save" modelAttribute="product">
-    <div><label for="title">Title</label>
+    <div>
+        <label for="title">Title</label>
         <form:input path="title" placeholder="Title"/>
     </div>
 
@@ -18,8 +21,11 @@
     <br>
     <tr>
         <td colspan="2">
-            <input type="button" onclick="location.href='/admin/list_products'" value="Cancel" />
-            <input type="submit" value="Save"/>
+            <button type="button" onclick="location.href='/admin/list_products'"
+                    class="btn btn-default">Cancel
+            </button>
+            <button type="submit" class="btn btn-default">Save
+            </button>
         </td>
     </tr>
     <form:input path="productID" type="hidden"/>

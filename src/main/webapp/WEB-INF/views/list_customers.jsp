@@ -11,10 +11,12 @@
 </head>
 <body>
 <jsp:include page="menu_admin.jsp"></jsp:include>
-<h3>Customers</h3>
+<div class="page-header">
+    <h3>Customers</h3>
+</div>
 <c:if test="${not empty listCustomers}">
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-default">
         <tr>
             <th>Name</th>
             <th>Surname</th>
@@ -35,5 +37,4 @@
     </table>
 </c:if>
 </body>
-
 </html>

@@ -11,9 +11,11 @@
 </head>
 <body>
 <jsp:include page="menu_user.jsp"></jsp:include>
-<h3>Products</h3>
+<div class="page-header">
+    <h3>Products</h3>
+</div>
 <c:if test="${not empty listProducts}">
-    <table>
+    <table class="table">
         <thead>
         <tr>
             <th>Title</th>
