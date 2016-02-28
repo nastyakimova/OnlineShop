@@ -18,7 +18,7 @@
     <br>
     <tr>
         <td colspan="2">
-            <input type="button" onclick="location.href='/admin/product/list_products'" value="Cancel" />
+            <input type="button" onclick="location.href='/admin/list_products'" value="Cancel" />
             <input type="submit" value="Save"/>
         </td>
     </tr>

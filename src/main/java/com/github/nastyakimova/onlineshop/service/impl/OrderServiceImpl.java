@@ -3,6 +3,7 @@ package com.github.nastyakimova.onlineshop.service.impl;
 import com.github.nastyakimova.onlineshop.entity.Customer;
 import com.github.nastyakimova.onlineshop.entity.Order;
 import com.github.nastyakimova.onlineshop.entity.Product;
+import com.github.nastyakimova.onlineshop.repositories.CustomerRepository;
 import com.github.nastyakimova.onlineshop.repositories.OrderRepository;
 import com.github.nastyakimova.onlineshop.service.OrderService;
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderRepository orderRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
     @Override
     public void saveOrder(Order order) {
@@ -59,5 +62,16 @@ public class OrderServiceImpl implements OrderService {
             LOG.info(product + " was added successfully to the order " + order);
         }
         orderRepository.save(order);
+    }
+
+    @Override
+    public void createOrder(Customer customer, Order order, List<Product> productList) {
+        order.setProductList(productList);
+        orderRepository.saveAndFlush(order);
+        LOG.info("products were added to the order " + order);
+        customer.getOrderList().add(order);
+        customerRepository.saveAndFlush(customer);
+        LOG.info("was create order " + order + " for customer " + customer);
+
     }
 }

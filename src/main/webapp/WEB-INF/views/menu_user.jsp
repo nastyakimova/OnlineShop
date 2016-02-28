@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,9 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<c:url value="/customer/new"/>">Join</a></li>
-                <li><a href="<c:url value="/login"/>">Sign in</a></li>
+                <sec:authorize access="!isAuthenticated()">
+                    <li><a href="<c:url value="/login"/>">Sign in</a></li>
+                </sec:authorize>
                 <li><a href="<c:url value="/cart/get"/>">
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </a>
