@@ -11,9 +11,14 @@ public class User {
     private String password;
     private boolean enabled;
     private Set<Authority> authorities = new HashSet<>();
-    private Customer customer;
 
     public User() {
+    }
+
+    public User(String username, String password, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
     }
 
     @Id

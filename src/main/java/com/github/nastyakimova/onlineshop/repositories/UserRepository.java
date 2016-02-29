@@ -1,11 +1,9 @@
 package com.github.nastyakimova.onlineshop.repositories;
 
-import com.github.nastyakimova.onlineshop.entity.Customer;
+import com.github.nastyakimova.onlineshop.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-    Customer findByEmail(String email);
-
+public interface UserRepository extends JpaRepository<User,String> {
 }

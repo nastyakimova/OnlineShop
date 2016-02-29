@@ -1,7 +1,11 @@
 package com.github.nastyakimova.onlineshop.controller;
 
+import com.github.nastyakimova.onlineshop.entity.Authority;
 import com.github.nastyakimova.onlineshop.entity.Customer;
+import com.github.nastyakimova.onlineshop.entity.User;
+import com.github.nastyakimova.onlineshop.service.AuthorityService;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
+import com.github.nastyakimova.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CustomerController {
     @Autowired
     CustomerService customerService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    AuthorityService authorityService;
 
     public static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(ProductController.class);
 
@@ -27,6 +35,10 @@ public class CustomerController {
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         LOG.info("Received request to save a customer");
         customerService.saveCustomer(customer);
+        User user=new User(customer.getEmail(),customer.getPassword(),true);
+        userService.saveUser(user);
+        Authority authority=new Authority(user,"user");
+        authorityService.saveAuthority(authority);
         return "redirect:/home";
     }
 

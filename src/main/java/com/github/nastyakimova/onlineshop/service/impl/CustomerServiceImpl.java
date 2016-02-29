@@ -62,4 +62,11 @@ public class CustomerServiceImpl implements CustomerService {
         LOG.info("list of all customers was loaded from the database");
         return customerList;
     }
+
+    @Override
+    public Customer getCustomerByEmail(String email) {
+        Customer customer=customerRepository.findByEmail(email);
+        LOG.info(customer+" was loaded from the database");
+        return customer;
+    }
 }

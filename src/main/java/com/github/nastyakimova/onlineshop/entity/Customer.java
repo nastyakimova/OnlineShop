@@ -15,7 +15,7 @@ public class Customer implements Serializable {
     private String password;
     private String email;
     private Boolean isLocked;
-    private String creditCardNumber;
+    /*private String creditCardNumber;*/
     List<Order> orderList = new ArrayList<>();
     private User user;
 
@@ -85,24 +85,6 @@ public class Customer implements Serializable {
     public void setIsLocked(Boolean isLocked) {
         this.isLocked = isLocked;
     }
-
-    @Column(name = "credit_card_number")
-    public String getCreditCardNumber() {
-        return creditCardNumber;
-    }
-
-    public void setCreditCardNumber(String creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
-    }
-
-/*    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "customer")
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }*/
 
     @Override
     public String toString() {

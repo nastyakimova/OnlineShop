@@ -19,7 +19,7 @@ public class ProductController {
 
     public static final Logger LOG = LoggerFactory.getLogger(ProductController.class);
 
-    @RequestMapping(value = "/admin/list_products", method = RequestMethod.GET)
+    @RequestMapping(value = {"/admin/list_products", "/admin"}, method = RequestMethod.GET)
     public String listProducts(ModelMap modelMap) {
         LOG.info("Received request to show all products");
         modelMap.addAttribute("listProducts", productService.getAllProducts());

@@ -10,6 +10,11 @@ public class Authority {
     private User user;
     private String authority;
 
+    public Authority(User user, String authority) {
+        this.user = user;
+        this.authority = authority;
+    }
+
     public Authority() {
     }
 
