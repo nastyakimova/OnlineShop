@@ -22,7 +22,6 @@
     </style>
 </head>
 <body>
-<!-- Static navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">

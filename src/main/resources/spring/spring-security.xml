@@ -13,7 +13,7 @@
         <security:intercept-url pattern="/login" access="isAnonymous()"/>
         <security:intercept-url pattern="/order/**" access="hasAuthority('user')"/>
         <security:intercept-url pattern="/customer/new" access="isAnonymous()"/>
-      <!--  <security:intercept-url pattern="/admin/**" access="hasAuthority('admin')"/>-->
+        <security:intercept-url pattern="/admin/**" access="hasAuthority('admin')"/>
         <security:form-login
                 login-page='/login'
                 default-target-url="/home"
