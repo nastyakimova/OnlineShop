@@ -15,6 +15,7 @@ public class Order implements Serializable {
     public Order() {
     }
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orders_id", unique = true, nullable = false)

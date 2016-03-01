@@ -43,14 +43,12 @@ public class OrderController {
         LOG.info("Received request to create new order");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Customer customer=customerService.getCustomerByEmail(authentication.getName());
-    /*    if (!customer.getIsLocked()) {*/
             List<Product> products = new ArrayList<>();
             for (int id : productIds) {
                 products.add(productService.getProductById(id));
             }
             orderService.createOrder(customer, new Order(), products);
             return "payment";
-      /*  } else return "redirect:/home";*/
     }
 
     @RequestMapping(value = "/admin/lock_customer/{orderID}&action={action}",

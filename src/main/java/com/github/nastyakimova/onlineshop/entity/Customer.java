@@ -17,7 +17,6 @@ public class Customer implements Serializable {
     private Boolean isLocked;
     /*private String creditCardNumber;*/
     List<Order> orderList = new ArrayList<>();
-    private User user;
 
     public Customer() {
     }
