@@ -11,9 +11,7 @@
 </head>
 <body>
 <jsp:include page="menu_admin.jsp"></jsp:include>
-<div class="page-header">
     <h3>Orders</h3>
-</div>
 <c:if test="${not empty listOrders}">
     <table class="table">
         <thead class="thead-default">

@@ -4,12 +4,12 @@ package com.github.nastyakimova.onlineshop.controller;
 import com.github.nastyakimova.onlineshop.entity.Customer;
 import com.github.nastyakimova.onlineshop.entity.Order;
 import com.github.nastyakimova.onlineshop.entity.Product;
-import com.github.nastyakimova.onlineshop.entity.User;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
 import com.github.nastyakimova.onlineshop.service.OrderService;
 import com.github.nastyakimova.onlineshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,18 +39,18 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/order/create", method = RequestMethod.POST)
-    public String createOrder(@AuthenticationPrincipal User user,
-                              @RequestParam("productIds") Integer[] productIds) {
+    public String createOrder(@RequestParam("productIds") Integer[] productIds) {
         LOG.info("Received request to create new order");
-        Customer customer=customerService.getCustomerByEmail(user.getUsername());
-        if (!customer.getIsLocked()) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Customer customer=customerService.getCustomerByEmail(authentication.getName());
+    /*    if (!customer.getIsLocked()) {*/
             List<Product> products = new ArrayList<>();
             for (int id : productIds) {
                 products.add(productService.getProductById(id));
             }
             orderService.createOrder(customer, new Order(), products);
             return "payment";
-        } else return "redirect:/home";
+      /*  } else return "redirect:/home";*/
     }
 
     @RequestMapping(value = "/admin/lock_customer/{orderID}&action={action}",

@@ -12,9 +12,7 @@
 </head>
 <body>
 <jsp:include page="menu_admin.jsp"></jsp:include>
-<div class="page-header">
     <h3>Products</h3>
-</div>
 <button type="button" onclick="location.href='/admin/product/new'" class="btn btn-default">
     Add Product
 </button>

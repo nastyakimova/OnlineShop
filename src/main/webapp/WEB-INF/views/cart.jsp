@@ -9,9 +9,7 @@
           href='<c:url value="/resources/css/bootstrap.min.css"/>'>
 </head>
 <body>
-<div class="page-header">
     <h3>Your Shopping Cart</h3>
-</div>
 <c:if test="${not empty cart}">
     <c:url var="actionUrl" value="/order/create"/>
     <form:form action="${actionUrl}" method="post">

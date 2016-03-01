@@ -5,9 +5,7 @@
     <title>Registration form</title>
 </head>
 <body>
-<div class="page-header">
     <h3>Join</h3>
-</div>
 <form:form method="post" action="/customer/save" modelAttribute="customer">
     <div><label for="name">Name</label>
         <form:input path="name" placeholder="Name"/>
