@@ -47,7 +47,7 @@ public class OrderController {
             for (int id : productIds) {
                 products.add(productService.getProductById(id));
             }
-            orderService.createOrder(customer, new Order(), products);
+            orderService.createOrder(customer,products);
             return "payment";
     }
 

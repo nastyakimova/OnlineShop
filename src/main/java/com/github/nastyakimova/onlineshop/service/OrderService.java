@@ -18,6 +18,6 @@ public interface OrderService {
     List<Order> getAllOrdersInCart(Customer customer);
 
     void addProductsToOrder(Order order, List<Product> productList);
-    void createOrder(Customer customer,Order order,List<Product> productList);
+    void createOrder(Customer customer,List<Product> productList);
 
 }
