@@ -71,8 +71,6 @@ public class OrderServiceImpl implements OrderService {
         LOG.info("products were added to the order " + order);
         order.setCustomer(customer);
         orderRepository.saveAndFlush(order);
-      /*  customer.getOrderList().add(order);
-        customerRepository.saveAndFlush(customer);*/
         LOG.info("was create order " + order + " for customer " + customer);
 
     }

@@ -10,11 +10,10 @@ import java.util.List;
 public class Order implements Serializable {
     private Integer orderID;
     private Customer customer;
-    private Boolean isPaid;
     private List<Product> productList = new ArrayList<>();
+
     public Order() {
     }
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,15 +34,6 @@ public class Order implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    @Column(name = "is_paid")
-    public Boolean getIsPaid() {
-        return isPaid;
-    }
-
-    public void setIsPaid(Boolean isPaid) {
-        this.isPaid = isPaid;
     }
 
     @ManyToMany(fetch = FetchType.EAGER)

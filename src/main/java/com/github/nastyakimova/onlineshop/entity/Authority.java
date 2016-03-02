@@ -15,7 +15,7 @@ public class Authority {
         this.authority = authority;
     }
 
-    public Authority() {
+    protected Authority() {
     }
 
     @Id

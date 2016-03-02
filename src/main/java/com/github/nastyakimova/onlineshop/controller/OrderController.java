@@ -12,10 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,21 +39,23 @@ public class OrderController {
     public String createOrder(@RequestParam("productIds") Integer[] productIds) {
         LOG.info("Received request to create new order");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Customer customer=customerService.getCustomerByEmail(authentication.getName());
+        Customer customer = customerService.getCustomerByEmail(authentication.getName());
+        if (!customer.getIsLocked()) {
             List<Product> products = new ArrayList<>();
             for (int id : productIds) {
                 products.add(productService.getProductById(id));
             }
-            orderService.createOrder(customer,products);
-            return "payment";
+            orderService.createOrder(customer, products);
+        }
+        return "redirect:/home";
+
     }
 
-    @RequestMapping(value = "/admin/lock_customer/{orderID}&action={action}",
+    @RequestMapping(value = "/admin/lock_customer/{orderID}",
             method = RequestMethod.POST)
-    public String lockCustomer(@PathVariable Integer orderID,
-                               @PathVariable("action") String action) {
+    public String lockCustomer(@PathVariable Integer orderID) {
         Order order = orderService.getOrderById(orderID);
-        if (action.equals("lock")) {
+        if (!order.getCustomer().getIsLocked()) {
             LOG.info("Received request to add order`s " + order + " owner to blacklist");
             customerService.lockCustomer(order.getCustomer());
         } else {
