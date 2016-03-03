@@ -28,6 +28,9 @@
         <input type="password" id="j_password" name="j_password" class="form-control"
                placeholder="Password" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button"
+                onclick="location.href='/customer/new'">Sign up
+        </button>
         <span class="text-danger">
                 <c:if test="${not empty param.login_error}">
                     Login failed: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>

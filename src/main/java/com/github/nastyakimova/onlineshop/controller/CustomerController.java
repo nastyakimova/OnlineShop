@@ -7,6 +7,9 @@ import com.github.nastyakimova.onlineshop.service.AuthorityService;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
 import com.github.nastyakimova.onlineshop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,11 +38,24 @@ public class CustomerController {
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         LOG.info("Received request to save a customer");
         customerService.saveCustomer(customer);
-        User user=new User(customer.getEmail(),customer.getPassword(),true);
+        User user = new User(customer.getEmail(), customer.getPassword(), true);
         userService.saveUser(user);
-        Authority authority=new Authority(user,"user");
+        Authority authority = new Authority(user, "user");
         authorityService.saveAuthority(authority);
+        doAutoLogin(customer.getEmail(), customer.getPassword());
         return "redirect:/home";
+    }
+
+    private void doAutoLogin(String username, String password) {
+        try {
+            Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
+            LOG.info("Logging in with {}" + authentication.getPrincipal());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        } catch (Exception e) {
+            SecurityContextHolder.getContext().setAuthentication(null);
+            LOG.error("Failure in autoLogin", e);
+
+        }
     }
 
     @RequestMapping(value = "/admin/list_customers")
