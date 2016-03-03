@@ -12,39 +12,41 @@
 </head>
 <body>
 <jsp:include page="menu_admin.jsp"></jsp:include>
+<div class="container">
     <h3>Products</h3>
-<button type="button" onclick="location.href='/admin/product/new'" class="btn btn-default">
-    Add Product
-</button>
-<br>
-<c:if test="${not empty listProducts}">
-    <table class="table">
-        <thead class="thead-default">
-        <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="product" items="${listProducts}">
-        <tr>
-            <td><c:out value="${product.title}"/></td>
-            <td><c:out value="${product.price}"/></td>
-            <td>
-                <nobr>
-                    <button type="button" onclick="location.href='/admin/product/edit/${product.productID}'"
-                            class="btn btn-default">Edit Product
-                    </button>
-                    <a href='/admin/product/delete/${product.productID}'
-                       onclick="return confirm('Are you sure you want to delete this product?');">Remove
-                    </a>
-                </nobr>
-            </td>
-        </tr>
-        </tbody>
-        </c:forEach>
-    </table>
-</c:if>
+    <button type="button" onclick="location.href='/admin/product/new'" class="btn btn-default">
+        Add Product
+    </button>
+    <br>
+    <c:if test="${not empty listProducts}">
+        <table class="table">
+            <thead class="thead-default">
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="product" items="${listProducts}">
+            <tr>
+                <td><c:out value="${product.title}"/></td>
+                <td><c:out value="${product.price}"/></td>
+                <td>
+                    <nobr>
+                        <button type="button" onclick="location.href='/admin/product/edit/${product.productID}'"
+                                class="btn btn-default">Edit Product
+                        </button>
+                        <a href='/admin/product/delete/${product.productID}'
+                           onclick="return confirm('Are you sure you want to delete this product?');">Remove
+                        </a>
+                    </nobr>
+                </td>
+            </tr>
+            </tbody>
+            </c:forEach>
+        </table>
+    </c:if>
+</div>
 </body>
 </html>

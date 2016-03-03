@@ -31,7 +31,7 @@
         <div class='wrapper text-center'>
             <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
             <button class="btn btn-lg btn-primary" type="button"
-                    onclick="location.href='/customer/new'">Sign up
+                    onclick="location.href='/customer/new'">Register
             </button>
         </div>
         <span class="text-danger">

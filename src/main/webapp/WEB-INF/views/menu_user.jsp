@@ -29,20 +29,20 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <sec:authorize access="!isAuthenticated()">
-                    <li><a href="<c:url value="/login"/>">Sign in</a></li>
+                    <li><a href="<c:url value="/login"/>">Log in</a></li>
+                    <li><a href="<c:url value="/customer/new"/>">Sign up</a></li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                 <form action="<c:url value="/logout"/>" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <input type="submit" value="Logout"/>
+                    <button class="btn btn-default" type="submit">Logout</button>
                     </sec:authorize>
-                    <sec:authorize access="!isAuthenticated()">
-                    <li><a href="<c:url value="/customer/new"/>">Join</a></li>
-                    </sec:authorize>
-                    <li><a href="<c:url value="/cart/get"/>">
-                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                    </a>
-                    </li>
+                </form>
+                <li><a href="<c:url value="/cart/get"/>">
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                </a>
+                </li>
+
             </ul>
         </div>
     </div>

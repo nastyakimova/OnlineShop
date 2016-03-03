@@ -35,9 +35,9 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <form action="<c:url value="/logout"/>" method="post">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <input type="submit" value="Logout"/>
-            </form>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <button class="btn btn-default" type="submit">Logout</button>
+                </form>
             </ul>
         </div>
     </div>

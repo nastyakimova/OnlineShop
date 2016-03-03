@@ -65,13 +65,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void createOrder(Customer customer,List<Product> productList) {
-        Order order=new Order();
+    public void createOrder(Customer customer, List<Product> productList) {
+        Order order = new Order();
         order.setProductList(productList);
         LOG.info("products were added to the order " + order);
         order.setCustomer(customer);
         orderRepository.saveAndFlush(order);
         LOG.info("was create order " + order + " for customer " + customer);
-
     }
 }
