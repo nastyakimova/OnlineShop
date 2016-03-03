@@ -14,33 +14,38 @@
 <jsp:include page="menu_admin.jsp"></jsp:include>
 <h3>Orders</h3>
 <c:if test="${not empty listOrders}">
-        <table class="table">
-            <thead class="thead-default">
-            <tr>
-                <th>Order Id</th>
-                <th>Client</th>
-                <th>Total amount</th>
-                <th> Add Customer to Blacklist</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${listOrders}" var="order">
-                <form:form action="/admin/lock_customer/${order.orderID}" method="post">
+    <table class="table">
+        <thead class="thead-default">
+        <tr>
+            <th>Order Id</th>
+            <th>Client</th>
+            <th>Total amount</th>
+            <th> Add Customer to Blacklist</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${listOrders}" var="order">
+            <form:form action="/admin/lock_customer/${order.orderID}" method="post">
                 <tr>
                     <td><c:out value="${order.orderID}"/></td>
                     <td><c:out value="${order.customer.name}"/></td>
                     <td></td>
                     <td colspan="2">
                         <c:if test="${order.customer.isLocked eq 'false'}">
-                             <button type="submit" class="btn btn-default">
-                        </button>
-                                 </c:if>
+                            <button type="submit" class="btn btn-default">Lock Customer
+                            </button>
+                        </c:if>
+                        <c:if test="${order.customer.isLocked eq 'true'}">
+                            <button type="submit" class="btn btn-default">Unlock Customer
+                            </button>
+                        </c:if>
+
                     </td>
                 </tr>
-                </form:form>
-            </c:forEach>
-            </tbody>
-        </table>
+            </form:form>
+        </c:forEach>
+        </tbody>
+    </table>
 </c:if>
 </body>
 

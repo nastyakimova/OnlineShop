@@ -19,7 +19,7 @@
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
-            <th>Password</th>
+            <th>Amount of orders</th>
         </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
                 <td><c:out value="${customer.name}"/></td>
                 <td><c:out value="${customer.surname}"/></td>
                 <td><c:out value="${customer.email}"/></td>
-                <td><c:out value="${customer.password}"/></td>
+                <td><c:out value="${customer.orderList.stream().count()}"/></td>
             </tr>
         </c:forEach>
         </tbody>
