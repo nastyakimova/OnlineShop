@@ -13,35 +13,22 @@
 </head>
 <body>
 <jsp:include page="menu_user.jsp"></jsp:include>
+<c:url var="actionUrl" value="/order/create"/>
 <div class="container">
     <h3>Your Shopping Cart</h3>
     <c:if test="${not empty cart}">
-        <c:url var="actionUrl" value="/order/create"/>
         <form:form action="${actionUrl}" method="post">
-            <table>
-                <thead>
-                <tr>
-                    <th>Add</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="product" items="${cart}">
-                <tr>
-                    <td><input type="checkbox" name="productIds" value="${product.productID}"/></td>
-                    <td><c:out value="${product.title}"/></td>
-                    <td><c:out value="${product.price}"/></td>
-                    <td>
+            <c:forEach var="product" items="${cart}">
+                <div class="checkbox">
+                    <label><input type="checkbox" name="productIds" value="${product.productID}"/>
+                        <c:out value="${product.title}"/>
+                        <c:out value="${product.price}"/>
                         <a href='/cart/delete/${product.productID}'
                            onclick="return confirm('Are you sure you want to delete this product?');">Remove
                         </a>
-                    </td>
-                </tr>
-                </tbody>
-                </c:forEach>
-            </table>
+                    </label>
+                </div>
+            </c:forEach>
             <button type="submit" class="btn btn-default">Buy it now</button>
         </form:form>
     </c:if>

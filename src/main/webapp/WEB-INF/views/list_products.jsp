@@ -37,9 +37,9 @@
                         <button type="button" onclick="location.href='/admin/product/edit/${product.productID}'"
                                 class="btn btn-default">Edit Product
                         </button>
-                        <a href='/admin/product/delete/${product.productID}'
-                           onclick="return confirm('Are you sure you want to delete this product?');">Remove
-                        </a>
+                        <button type="button" onclick="location.href='/admin/product/delete/${product.productID}'"
+                                class="btn btn-default">Remove
+                        </button>
                     </nobr>
                 </td>
             </tr>
