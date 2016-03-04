@@ -11,6 +11,7 @@
     <link rel="stylesheet"
           href='<c:url value="/resources/css/bootstrap.min.css"/>'>
 </head>
+
 <body>
 <jsp:include page="menu_user.jsp"></jsp:include>
 <c:url var="actionUrl" value="/order/create"/>
