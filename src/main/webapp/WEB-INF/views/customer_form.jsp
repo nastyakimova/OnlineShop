@@ -28,7 +28,8 @@
         <br>
         <form:input path="customerID" type="hidden"/>
         <div class='wrapper text-center'>
-            <button type="button" class="btn btn-lg btn-primary">Cancel</button>
+            <button type="button" onclick="location.href='/home'"
+                    class="btn btn-lg btn-primary">Cancel</button>
             <button type="submit" class="btn btn-lg btn-primary">Register</button>
         </div>
     </form:form>

@@ -17,7 +17,6 @@
     <button type="button" onclick="location.href='/admin/product/new'" class="btn btn-default">
         Add Product
     </button>
-    <br>
     <c:if test="${not empty listProducts}">
         <table class="table">
             <thead class="thead-default">

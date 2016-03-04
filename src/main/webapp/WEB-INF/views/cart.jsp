@@ -18,18 +18,34 @@
     <h3>Your Shopping Cart</h3>
     <c:if test="${not empty cart}">
         <form:form action="${actionUrl}" method="post">
-            <c:forEach var="product" items="${cart}">
-                <div class="checkbox">
-                    <label><input type="checkbox" name="productIds" value="${product.productID}"/>
-                        <c:out value="${product.title}"/>
-                        <c:out value="${product.price}"/>
-                        <a href='/cart/delete/${product.productID}'
-                           onclick="return confirm('Are you sure you want to delete this product?');">Remove
-                        </a>
-                    </label>
-                </div>
-            </c:forEach>
-            <button type="submit" class="btn btn-default">Buy it now</button>
+            <table class="table">
+                <thead class="thead-default">
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="product" items="${cart}">
+                <tr>
+                    <td><c:out value="${product.title}"/></td>
+                    <td><c:out value="${product.price}"/></td>
+                    <td>
+                        <button type="button" onclick="location.href='/cart/delete/${product.productID}'"
+                                class="btn btn-default">Remove
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                </c:forEach>
+            </table>
+            <nobr>
+                <button type="button" onclick="location.href='/home'"
+                        class="btn btn-default">Back
+                </button>
+                <button type="submit" class="btn btn-default">Buy it now</button>
+            </nobr>
         </form:form>
     </c:if>
 </div>
