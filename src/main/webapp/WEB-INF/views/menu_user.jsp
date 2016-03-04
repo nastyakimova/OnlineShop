@@ -32,18 +32,18 @@
                     <li><a href="<c:url value="/login"/>">Log in</a></li>
                     <li><a href="<c:url value="/customer/new"/>">Sign up</a></li>
                 </sec:authorize>
-                <sec:authorize access="isAuthenticated()">
-                <form action="<c:url value="/logout"/>" method="post">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button class="btn btn-default" type="submit">Logout</button>
-                    </sec:authorize>
-                </form>
                 <li><a href="<c:url value="/cart/get"/>">
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </a>
                 </li>
-
             </ul>
+            <sec:authorize access="isAuthenticated()">
+                <form action="<c:url value="/logout"/>" method="post"
+                      class="navbar-form navbar-right">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <button class="btn btn-primary" type="submit">Logout</button>
+                </form>
+            </sec:authorize>
         </div>
     </div>
 </nav>

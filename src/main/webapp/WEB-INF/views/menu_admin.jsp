@@ -33,12 +33,11 @@
                 <li><a href="<c:url value="/admin/list_orders"/>">Orders</a></li>
                 <li><a href="<c:url value="/admin/list_customers"/>">Customers</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <form action="<c:url value="/logout"/>" method="post">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button class="btn btn-default" type="submit">Logout</button>
-                </form>
-            </ul>
+            <form action="<c:url value="/logout"/>" method="post"
+                  class="navbar-form navbar-right">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button class="btn btn-primary" type="submit">Logout</button>
+            </form>
         </div>
     </div>
 </nav>
