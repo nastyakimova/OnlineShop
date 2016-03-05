@@ -61,5 +61,11 @@ public class OrderController {
         }
         return "redirect:/admin/list_orders";
     }
-
+    @RequestMapping(value = "/order/get",method = RequestMethod.GET)
+    public String getOrder(ModelMap modelMap){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Customer customer = customerService.getCustomerByEmail(authentication.getName());
+        modelMap.addAttribute("listOrders",customer.getOrderList());
+        return "customer_orders";
+    }
 }

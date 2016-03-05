@@ -36,13 +36,14 @@
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                 </a>
                 </li>
+                <sec:authorize access="isAuthenticated()">
+                <li><a href="<c:url value="/order/get"/>">Orders</a></li>
             </ul>
-            <sec:authorize access="isAuthenticated()">
-                <form action="<c:url value="/logout"/>" method="post"
-                      class="navbar-form navbar-right">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button class="btn btn-primary" type="submit">Logout</button>
-                </form>
+            <form action="<c:url value="/logout"/>" method="post"
+                  class="navbar-form navbar-right">
+                <button class="btn btn-primary" type="submit">Logout</button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
             </sec:authorize>
         </div>
     </div>

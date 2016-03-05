@@ -14,12 +14,12 @@
 <div class="container">
     <h3>Products</h3>
     <c:if test="${not empty listProducts}">
-        <table class="table">
+        <table class="table table-bordered ">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th></th>
+                <th width="60%">Title</th>
+                <th width="30%">Price</th>
+                <th width="10%"></th>
             </tr>
             </thead>
             <tbody>

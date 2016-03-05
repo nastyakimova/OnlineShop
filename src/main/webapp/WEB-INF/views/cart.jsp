@@ -16,38 +16,45 @@
 <c:url var="actionUrl" value="/order/create"/>
 <div class="container">
     <h3>Your Shopping Cart</h3>
-    <c:if test="${not empty cart}">
-        <form:form action="${actionUrl}" method="post">
-            <table class="table">
-                <thead class="thead-default">
-                <tr>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="product" items="${cart}">
-                <tr>
-                    <td><c:out value="${product.title}"/></td>
-                    <td><c:out value="${product.price}"/></td>
-                    <td>
-                        <button type="button" onclick="location.href='/cart/delete/${product.productID}'"
-                                class="btn btn-default">Remove
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-                </c:forEach>
-            </table>
-            <nobr>
-                <button type="button" onclick="location.href='/home'"
-                        class="btn btn-default">Back
-                </button>
-                <button type="submit" class="btn btn-default">Buy it now</button>
-            </nobr>
-        </form:form>
-    </c:if>
+    <c:choose>
+        <c:when test="${not empty cart}">
+            <form:form action="${actionUrl}" method="post">
+                <table class="table">
+                    <thead class="thead-default">
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="product" items="${cart}">
+                    <tr>
+                        <td><c:out value="${product.title}"/></td>
+                        <td><c:out value="${product.price}"/></td>
+                        <td>
+                            <button type="button" onclick="location.href='/cart/delete/${product.productID}'"
+                                    class="btn btn-default">Remove
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </c:forEach>
+                </table>
+                <nobr>
+                    <button type="button" onclick="location.href='/home'"
+                            class="btn btn-default">Back
+                    </button>
+                    <button type="submit" class="btn btn-default">Buy it now</button>
+                </nobr>
+            </form:form>
+        </c:when>
+        <c:otherwise>
+            <button type="button" onclick="location.href='/home'"
+                    class="btn btn-default">Back
+            </button>
+        </c:otherwise>
+    </c:choose>
 </div>
 </body>
 </html>
