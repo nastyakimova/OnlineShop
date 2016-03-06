@@ -21,31 +21,25 @@
                 <tr>
                     <th>Order Id</th>
                     <th>Client</th>
-                    <th>Total amount</th>
-                    <th> Add Customer to Blacklist</th>
+                    <th>Items</th>
+                    <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${listOrders}" var="order">
-                    <form:form action="/admin/lock_customer/${order.orderID}" method="post">
-                        <tr>
-                            <td><c:out value="${order.orderID}"/></td>
-                            <td><c:out value="${order.customer.name}"/></td>
-                            <td></td>
-                            <td colspan="2">
-                                <c:if test="${order.customer.isLocked eq 'false'}">
-                                    <button type="submit" class="btn btn-default">Lock Customer
-                                    </button>
-                                </c:if>
-                                <c:if test="${order.customer.isLocked eq 'true'}">
-                                    <button type="submit" class="btn btn-default">Unlock Customer
-                                    </button>
-                                </c:if>
-
-                            </td>
-                        </tr>
-                    </form:form>
-                </c:forEach>
+                <tr>
+                    <td><c:out value="${order.orderID}"/></td>
+                    <td><c:out value="${order.customer.name} ${order.customer.surname}"/></td>
+                    <td><c:forEach items="${order.productList}" var="product">
+                        <c:out value="${product.title} (${product.price})"/>
+                    </c:forEach></td>
+                    <td><c:set var="total" value="${0}"/>
+                        <c:forEach items="${order.productList}" var="product">
+                            <c:set var="total" value="${total + product.price}"/>
+                        </c:forEach>
+                        <c:out value="${total}"/>
+                    </td>
+                    </c:forEach>
                 </tbody>
             </table>
         </c:when>

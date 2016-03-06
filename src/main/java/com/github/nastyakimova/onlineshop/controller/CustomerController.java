@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -63,5 +64,20 @@ public class CustomerController {
         LOG.info("Received request to show all customers");
         modelMap.addAttribute("listCustomers", customerService.getAllCustomers());
         return "list_customers";
+    }
+
+
+    @RequestMapping(value = "/admin/lock_customer/{customerID}",
+            method = RequestMethod.POST)
+    public String lockCustomer(@PathVariable Integer customerID) {
+        Customer customer=customerService.getCustomerById(customerID);
+        if (!customer.getIsLocked()) {
+            LOG.info("Received request to add " + customer + " to blacklist");
+            customerService.lockCustomer(customer);
+        } else {
+            LOG.info("Received request to remove  " + customer + " from blacklist");
+            customerService.unlockCustomer(customer);
+        }
+        return "redirect:/admin/list_customers";
     }
 }

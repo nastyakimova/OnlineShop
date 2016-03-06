@@ -19,16 +19,22 @@
                 <thead class="thead-default">
                 <tr>
                     <th>Order ID</th>
-                    <th></th>
-                    <th></th>
+                    <th>Items</th>
+                    <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${listOrders}" var="order">
                     <tr>
                         <td><c:out value="${order.orderID}"/></td>
-                        <td><c:out value="${order.productList}"/></td>
-                        <td></td>
+                        <td><c:forEach items="${order.productList}" var="product">
+                            <c:out value="${product.title} (${product.price})"/>
+                        </c:forEach></td>
+                        <td><c:set var="total" value="${0}"/>
+                            <c:forEach items="${order.productList}" var="product">
+                                <c:set var="total" value="${total + product.price}"/>
+                            </c:forEach>
+                            <c:out value="${total}"/></td>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -22,16 +23,29 @@
                     <th>Surname</th>
                     <th>Email</th>
                     <th>Amount of orders</th>
+                    <th> Add Customer to Blacklist</th>
                 </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${listCustomers}" var="customer">
-                    <tr>
-                        <td><c:out value="${customer.name}"/></td>
-                        <td><c:out value="${customer.surname}"/></td>
-                        <td><c:out value="${customer.email}"/></td>
-                        <td><c:out value="${customer.orderList.stream().count()}"/></td>
-                    </tr>
+                    <form:form action="/admin/lock_customer/${customer.customerID}" method="post">
+                        <tr>
+                            <td><c:out value="${customer.name}"/></td>
+                            <td><c:out value="${customer.surname}"/></td>
+                            <td><c:out value="${customer.email}"/></td>
+                            <td><c:out value="${customer.orderList.stream().count()}"/></td>
+                            <td>
+                                <c:if test="${!customer.isLocked}">
+                                    <button type="submit" class="btn btn-default">Lock Customer
+                                    </button>
+                                </c:if>
+                                <c:if test="${customer.isLocked}">
+                                    <button type="submit" class="btn btn-default">Unlock Customer
+                                    </button>
+                                </c:if>
+                            </td>
+                        </tr>
+                    </form:form>
                 </c:forEach>
                 </tbody>
             </table>

@@ -13,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="menu_user.jsp"></jsp:include>
-<c:url var="actionUrl" value="/order/create"/>
+<c:url var="actionUrl" value="/order/create/${customer.customerID}"/>
 <div class="container">
     <h3>Your Shopping Cart</h3>
     <c:choose>
@@ -45,7 +45,18 @@
                     <button type="button" onclick="location.href='/home'"
                             class="btn btn-default">Back
                     </button>
-                    <button type="submit" class="btn btn-default">Buy it now</button>
+                    <c:choose>
+                        <c:when test="${customer.isLocked}">
+                            <button type="submit" class="btn btn-default" disabled="disabled">
+                                Buy it now
+                            </button>
+                        </c:when>
+                        <c:otherwise>
+                            <button type="submit" class="btn btn-default">
+                                Buy it now
+                            </button>
+                        </c:otherwise>
+                    </c:choose>
                 </nobr>
             </form:form>
         </c:when>
