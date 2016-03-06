@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 @Service
 @Transactional
 public class ProductServiceImpl implements ProductService {
@@ -40,9 +42,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        List<Product> productList = productRepository.findAll();
+        Iterable<Product> productList = productRepository.findAll();
         LOG.info("list of all products was loaded from the database");
-        return productList;
+        return newArrayList(productList);
     }
 
 }

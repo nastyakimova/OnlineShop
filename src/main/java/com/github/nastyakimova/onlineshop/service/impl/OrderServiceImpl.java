@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 @Service
 @Transactional
 public class OrderServiceImpl implements OrderService {
@@ -45,9 +47,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getAllOrders() {
-        List<Order> orderList = orderRepository.findAll();
+        Iterable<Order> orderList = orderRepository.findAll();
         LOG.info("list of all orders was loaded from the database");
-        return orderList;
+        return newArrayList(orderList);
     }
 
     @Override
@@ -70,7 +72,7 @@ public class OrderServiceImpl implements OrderService {
         order.setProductList(productList);
         LOG.info("products were added to the order " + order);
         order.setCustomer(customer);
-        orderRepository.saveAndFlush(order);
+        orderRepository.save(order);
         LOG.info("was create order " + order + " for customer " + customer);
     }
 }

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 
 @Service
 @Transactional
@@ -58,9 +60,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers() {
-        List<Customer> customerList = customerRepository.findAll();
+        Iterable<Customer> customerList = customerRepository.findAll();
         LOG.info("list of all customers was loaded from the database");
-        return customerList;
+        return newArrayList(customerList);
     }
 
     @Override
