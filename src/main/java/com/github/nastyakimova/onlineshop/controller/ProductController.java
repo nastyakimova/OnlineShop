@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 public class ProductController {
+    final static int pageSize = 10;
+
     @Autowired
     ProductService productService;
 
@@ -28,7 +32,19 @@ public class ProductController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String showProducts(ModelMap modelMap) {
-        modelMap.addAttribute("listProducts", productService.getAllProducts());
+        modelMap.addAttribute("listProducts",productService.getProductPage(0, pageSize));
+        modelMap.addAttribute("pageAmount", countPages(productService.getAllProducts()));
+        return "home";
+    }
+
+    private Integer countPages(List<Product> productList) {
+        return (productList.size() / pageSize) + 1;
+    }
+
+    @RequestMapping(value = "/home/{pageNumber}", method = RequestMethod.GET)
+    public String showProductsPage(@PathVariable Integer pageNumber, ModelMap modelMap) {
+        modelMap.addAttribute("listProducts", productService.getProductPage(pageNumber, pageSize));
+        modelMap.addAttribute("pageAmount", countPages(productService.getAllProducts()));
         return "home";
     }
 

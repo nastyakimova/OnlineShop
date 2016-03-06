@@ -36,6 +36,15 @@
             </tbody>
             </c:forEach>
         </table>
+        <c:set var="count" value="0" scope="page"/>
+        <nav>
+            <ul class="pagination">
+                <c:forEach begin="1" end="${pageAmount}">
+                    <li><a href="/home/${count}">${count+1}</a></li>
+                    <c:set var="count" value="${count + 1}" scope="page"/>
+                </c:forEach>
+            </ul>
+        </nav>
     </c:if>
 </div>
 </body>

@@ -6,6 +6,7 @@ import com.github.nastyakimova.onlineshop.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,6 +46,13 @@ public class ProductServiceImpl implements ProductService {
         Iterable<Product> productList = productRepository.findAll();
         LOG.info("list of all products was loaded from the database");
         return newArrayList(productList);
+    }
+
+    @Override
+    public List<Product> getProductPage(int pageNumber, int pageSize) {
+        Iterable<Product> allProducts = productRepository.findAll(new PageRequest(pageNumber, pageSize));
+        LOG.info("Page number " + pageNumber + " page size " + pageSize);
+        return newArrayList(allProducts);
     }
 
 }
