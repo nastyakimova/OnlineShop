@@ -44,7 +44,7 @@ public class OrderController {
             orderService.createOrder(customer,shoppingCart.getProductList());
             shoppingCart.removeAllProducts();
         }
-        return "redirect:/home";
+        return "redirect:/order/get";
 
     }
 
