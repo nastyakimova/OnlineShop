@@ -15,7 +15,7 @@
         <security:intercept-url pattern="/customer/new" access="isAnonymous()"/>
         <security:intercept-url pattern="/admin/**" access="hasAuthority('admin')"/>
         <security:form-login
-                login-page='/login' authentication-success-handler-ref="savedRequestAwareAuthenticationSuccessHandler"
+                login-page='/login' authentication-success-handler-ref="authenticationSuccessHandler"
                 username-parameter="j_username"
                 password-parameter="j_password"
                 authentication-failure-url="/login?login_error=1"/>
@@ -23,9 +23,8 @@
         <security:csrf/>
     </security:http>
 
-    <bean id="savedRequestAwareAuthenticationSuccessHandler"
-          class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-        <property name="useReferer" value="true"/>
+    <bean id="authenticationSuccessHandler"
+          class="com.github.nastyakimova.onlineshop.controller.CustomAuthenticationHandler">
     </bean>
 
     <security:authentication-manager>
