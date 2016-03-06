@@ -42,6 +42,7 @@ public class OrderController {
         Customer customer=customerService.getCustomerById(customerID);
         if (!customer.getIsLocked()) {
             orderService.createOrder(customer,shoppingCart.getProductList());
+            shoppingCart.removeAllProducts();
         }
         return "redirect:/home";
 

@@ -24,4 +24,6 @@ public class ShoppingCart {
     public void deleteProduct(Product product) {
         productList.remove(product);
     }
+
+    public void removeAllProducts() {productList.clear();}
 }
