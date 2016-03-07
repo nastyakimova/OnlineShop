@@ -55,4 +55,9 @@ public class ProductServiceImpl implements ProductService {
         return newArrayList(allProducts);
     }
 
+    @Override
+    public long getAmountPage() {
+        return productRepository.countProducts();
+    }
+
 }

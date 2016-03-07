@@ -38,7 +38,7 @@ public class Order implements Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "orders_product",
+            name = "orders_products",
             joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )

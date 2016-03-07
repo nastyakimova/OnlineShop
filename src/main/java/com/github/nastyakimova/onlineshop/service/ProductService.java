@@ -15,5 +15,5 @@ public interface ProductService {
     List<Product> getAllProducts();
 
     List<Product> getProductPage(int pageNumber, int pageSize);
-
+    long getAmountPage();
 }

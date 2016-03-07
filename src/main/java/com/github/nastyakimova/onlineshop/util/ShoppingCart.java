@@ -1,4 +1,4 @@
-package com.github.nastyakimova.onlineshop.service.util;
+package com.github.nastyakimova.onlineshop.util;
 
 import com.github.nastyakimova.onlineshop.entity.Product;
 import org.springframework.context.annotation.Scope;

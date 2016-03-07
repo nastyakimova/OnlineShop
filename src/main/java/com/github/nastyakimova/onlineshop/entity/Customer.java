@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer implements Serializable {
 
     private Integer customerID;

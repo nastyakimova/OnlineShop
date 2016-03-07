@@ -30,21 +30,22 @@ public class ProductController {
         return "list_products";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String showProducts(ModelMap modelMap) {
-        modelMap.addAttribute("listProducts",productService.getProductPage(0, pageSize));
-        modelMap.addAttribute("pageAmount", countPages(productService.getAllProducts()));
-        return "home";
+   private long countPages(long countResult) {
+       long result= (long) Math.ceil(countResult*1.0 / pageSize*1.0);
+       return result;
     }
 
-    private Integer countPages(List<Product> productList) {
-        return (productList.size() / pageSize) + 1;
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String showProducts(ModelMap modelMap) {
+        modelMap.addAttribute("listProducts", productService.getProductPage(0, pageSize));
+        modelMap.addAttribute("pageAmount", countPages(productService.getAmountPage()));
+        return "home";
     }
 
     @RequestMapping(value = "/home/{pageNumber}", method = RequestMethod.GET)
     public String showProductsPage(@PathVariable Integer pageNumber, ModelMap modelMap) {
         modelMap.addAttribute("listProducts", productService.getProductPage(pageNumber, pageSize));
-        modelMap.addAttribute("pageAmount", countPages(productService.getAllProducts()));
+        modelMap.addAttribute("pageAmount", countPages(productService.getAmountPage()));
         return "home";
     }
 

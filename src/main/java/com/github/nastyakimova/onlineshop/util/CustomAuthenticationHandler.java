@@ -1,4 +1,4 @@
-package com.github.nastyakimova.onlineshop.service.util;
+package com.github.nastyakimova.onlineshop.util;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

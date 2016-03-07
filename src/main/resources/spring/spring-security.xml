@@ -24,7 +24,7 @@
     </security:http>
 
     <bean id="authenticationSuccessHandler"
-          class="com.github.nastyakimova.onlineshop.service.util.CustomAuthenticationHandler">
+          class="com.github.nastyakimova.onlineshop.util.CustomAuthenticationHandler">
     </bean>
 
     <security:authentication-manager>
