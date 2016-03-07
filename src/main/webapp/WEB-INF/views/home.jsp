@@ -40,7 +40,14 @@
         <nav>
             <ul class="pagination">
                 <c:forEach begin="1" end="${pageAmount}">
-                    <li><a href="/home/${count}">${count+1}</a></li>
+                    <c:choose>
+                        <c:when test="${count eq currentPage}">
+                            <li class="active"><a href="/home/${count}">${count+1}</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="/home/${count}">${count+1}</a></li>
+                        </c:otherwise>
+                    </c:choose>
                     <c:set var="count" value="${count + 1}" scope="page"/>
                 </c:forEach>
             </ul>
