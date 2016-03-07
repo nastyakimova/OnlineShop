@@ -11,7 +11,7 @@
 <c:url var="actionUrl" value="/customer/save"/>
 <div class="container">
     <form:form action="${actionUrl}" method="post" modelAttribute="customer" class="form-signin">
-        <h2 class="form-signin-heading text-center">Please sign ip</h2>
+        <h2 class="form-signin-heading text-center">Please sign up</h2>
         <label for="name" class="sr-only">Name</label>
         <form:input path="name" class="form-control" placeholder="Name"/>
 
@@ -23,7 +23,7 @@
                     required="required"/>
 
         <label for="password" class="sr-only">Password</label>
-        <form:input path="password" class="form-control" placeholder="Password"
+        <form:password path="password" class="form-control" placeholder="Password"
                     required="required"/>
         <br>
         <form:input path="customerID" type="hidden"/>

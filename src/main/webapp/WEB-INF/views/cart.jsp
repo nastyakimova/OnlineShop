@@ -61,6 +61,7 @@
             </form:form>
         </c:when>
         <c:otherwise>
+            <div class="alert alert-info" role="alert"> There are no products in your shopping cart</div>
             <button type="button" onclick="location.href='/home'"
                     class="btn btn-default">Back
             </button>

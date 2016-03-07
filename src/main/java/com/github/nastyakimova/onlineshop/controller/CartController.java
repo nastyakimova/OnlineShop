@@ -4,7 +4,7 @@ import com.github.nastyakimova.onlineshop.entity.Customer;
 import com.github.nastyakimova.onlineshop.entity.Product;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
 import com.github.nastyakimova.onlineshop.service.ProductService;
-import com.github.nastyakimova.onlineshop.util.ShoppingCart;
+import com.github.nastyakimova.onlineshop.service.entity.ShoppingCart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
