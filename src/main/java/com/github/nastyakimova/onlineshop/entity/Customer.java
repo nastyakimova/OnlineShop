@@ -58,7 +58,7 @@ public class Customer implements Serializable {
         this.email = email;
     }
 
-    @Column(name = "password",nullable = false, length = 50)
+    @Column(name = "password",nullable = false, length = 128)
     public String getPassword() {
         return password;
     }

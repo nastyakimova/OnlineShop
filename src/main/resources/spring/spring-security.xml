@@ -23,14 +23,17 @@
         <security:logout logout-url='/logout' logout-success-url="/home"/>
         <security:csrf/>
     </security:http>
-    <bean id="authenticationSuccessHandler"
-           class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
-        <property name="useReferer" value="true"/>
-    </bean>
 
     <security:authentication-manager>
         <security:authentication-provider>
             <security:jdbc-user-service data-source-ref="dataSource"/>
+            <security:password-encoder ref="bcryptEncoder"/>
         </security:authentication-provider>
     </security:authentication-manager>
+
+    <bean id="authenticationSuccessHandler"
+          class="com.github.nastyakimova.onlineshop.util.CustomAuthenticationHandler">
+    </bean>
+    <bean id="bcryptEncoder"
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans>

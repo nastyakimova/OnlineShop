@@ -39,10 +39,10 @@ public class CustomerController {
     @RequestMapping(value = "/customer/save", method = RequestMethod.POST)
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         LOG.info("Received request to save a customer");
-        BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
-        customer.setPassword(encoder.encode(customer.getPassword()));
+        String encryptedPassword=new BCryptPasswordEncoder().encode(customer.getPassword());
+        customer.setPassword(encryptedPassword);
         customerService.saveCustomer(customer);
-        User user = new User(customer.getEmail(),encoder.encode(customer.getPassword()), true);
+        User user = new User(customer.getEmail(),encryptedPassword, true);
         userService.saveUser(user);
         Authority authority = new Authority(user, "user");
         authorityService.saveAuthority(authority);
