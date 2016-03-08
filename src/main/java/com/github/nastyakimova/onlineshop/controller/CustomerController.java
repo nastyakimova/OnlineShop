@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,8 +39,10 @@ public class CustomerController {
     @RequestMapping(value = "/customer/save", method = RequestMethod.POST)
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         LOG.info("Received request to save a customer");
+        BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+        customer.setPassword(encoder.encode(customer.getPassword()));
         customerService.saveCustomer(customer);
-        User user = new User(customer.getEmail(), customer.getPassword(), true);
+        User user = new User(customer.getEmail(),encoder.encode(customer.getPassword()), true);
         userService.saveUser(user);
         Authority authority = new Authority(user, "user");
         authorityService.saveAuthority(authority);
