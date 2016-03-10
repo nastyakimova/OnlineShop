@@ -39,8 +39,8 @@ public class OrderController {
     public String createOrder(@PathVariable Integer customerID) {
         LOG.info("Received request to create new order");
         Customer customer = customerService.getCustomerById(customerID);
-        orderService.createOrder(customer, shoppingCart.getProductList());
-        shoppingCart.removeAllProducts();
+        orderService.createOrder(customer, shoppingCart.getProductCart());
+      shoppingCart.emptyCart();
         return "redirect:/order/get";
 
     }

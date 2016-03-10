@@ -18,22 +18,27 @@
     <h3>Your Shopping Cart</h3>
     <c:choose>
         <c:when test="${not empty cart}">
+            <button type="button" onclick="location.href='/cart/remove_all'"
+                    class="btn btn-default">Remove All Items
+            </button>
             <form:form action="${actionUrl}" method="post">
                 <table class="table">
                     <thead class="thead-default">
                     <tr>
                         <th>Title</th>
                         <th>Price</th>
+                        <th>Amount</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="product" items="${cart}">
+                    <c:forEach var="cartItem" items="${cart}">
                     <tr>
-                        <td><c:out value="${product.title}"/></td>
-                        <td><c:out value="${product.price}"/></td>
+                        <td><c:out value="${cartItem.key.title}"/></td>
+                        <td><c:out value="${cartItem.key.price}"/></td>
+                        <td><c:out value="${cartItem.value}"/></td>
                         <td>
-                            <button type="button" onclick="location.href='/cart/delete/${product.productID}'"
+                            <button type="button" onclick="location.href='/cart/delete/${cartItem.key.productID}'"
                                     class="btn btn-default">Remove
                             </button>
                         </td>

@@ -31,7 +31,7 @@ public class CartController {
     @RequestMapping(value = "get", method = RequestMethod.GET)
     public String getCart(ModelMap modelMap) {
         LOG.info("Received request to show all products in cart");
-        modelMap.addAttribute("cart", shoppingCart.getProductList());
+        modelMap.addAttribute("cart",shoppingCart.getProductCart());
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Customer customer = customerService.getCustomerByEmail(authentication.getName());
         modelMap.addAttribute("customer",customer);
@@ -52,6 +52,12 @@ public class CartController {
         LOG.info("Received request to delete " + product + " from cart");
         shoppingCart.deleteProduct(product);
         return "redirect:/cart/get";
+    }
+    @RequestMapping(value = "/remove_all",method = RequestMethod.GET)
+    public String removeAll(){
+        LOG.info("Received request to clear cart");
+        shoppingCart.emptyCart();
+        return "redirect:/home";
     }
 
 

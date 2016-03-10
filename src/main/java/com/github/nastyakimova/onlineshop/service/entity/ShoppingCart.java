@@ -5,25 +5,39 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShoppingCart {
-    private List<Product> productList = new ArrayList<>();
+    Map<Product, Integer> productCart;
 
-    public List<Product> getProductList() {
-        return productList;
+
+    public ShoppingCart() {
+        productCart = new HashMap<>();
+    }
+
+    public Map<Product, Integer> getProductCart() {
+        return productCart;
     }
 
     public void addProduct(Product product) {
-        productList.add(product);
+        if (!productCart.containsKey(product)) {
+            productCart.put(product, 1);
+        } else {
+            productCart.put(product, productCart.get(product) + 1);
+        }
     }
 
     public void deleteProduct(Product product) {
-        productList.remove(product);
+        if (productCart.get(product) == 1) {
+            productCart.remove(product);
+        } else {
+            productCart.put(product, productCart.get(product) - 1);
+        }
     }
-
-    public void removeAllProducts() {productList.clear();}
+    public void emptyCart(){
+        productCart.clear();
+    }
 }

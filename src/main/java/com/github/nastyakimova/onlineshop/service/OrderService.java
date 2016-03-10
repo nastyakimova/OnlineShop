@@ -5,19 +5,12 @@ import com.github.nastyakimova.onlineshop.entity.Order;
 import com.github.nastyakimova.onlineshop.entity.Product;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrderService {
-    void saveOrder(Order order);
-
-    Order getOrderById(Integer orderID);
-
-    void deleteOrder(Order order);
 
     List<Order> getAllOrders();
 
-    List<Order> getAllOrdersInCart(Customer customer);
-
-    void addProductsToOrder(Order order, List<Product> productList);
-    void createOrder(Customer customer,List<Product> productList);
+    void createOrder(Customer customer,Map<Product,Integer> productCart);
 
 }

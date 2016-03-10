@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -27,25 +28,6 @@ public class OrderServiceImpl implements OrderService {
     CustomerRepository customerRepository;
 
     @Override
-    public void saveOrder(Order order) {
-        orderRepository.save(order);
-        LOG.info(order + " was saved to the database");
-    }
-
-    @Override
-    public Order getOrderById(Integer orderID) {
-        Order order = orderRepository.findOne(orderID);
-        LOG.info(order + " was loaded from the database");
-        return order;
-    }
-
-    @Override
-    public void deleteOrder(Order order) {
-        orderRepository.delete(order);
-        LOG.info(order + " was deleted from the database");
-    }
-
-    @Override
     public List<Order> getAllOrders() {
         Iterable<Order> orderList = orderRepository.findAll();
         LOG.info("list of all orders was loaded from the database");
@@ -53,24 +35,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getAllOrdersInCart(Customer customer) {
-        return null;
-    }
-
-    @Override
-    public void addProductsToOrder(Order order, List<Product> productList) {
-        for (Product product : productList) {
-            order.getProductList().add(product);
-            LOG.info(product + " was added successfully to the order " + order);
-        }
-        orderRepository.save(order);
-    }
-
-    @Override
-    public void createOrder(Customer customer, List<Product> productList) {
+    public void createOrder(Customer customer, Map<Product,Integer> productCart) {
         if (!customer.getIsLocked()) {
             Order order = new Order();
-            order.setProductList(productList);
+            order.setProductMap(productCart);
             LOG.info("products were added to the order " + order);
             order.setCustomer(customer);
             orderRepository.save(order);
