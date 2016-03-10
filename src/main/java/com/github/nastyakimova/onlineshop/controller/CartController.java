@@ -53,6 +53,15 @@ public class CartController {
         shoppingCart.deleteProduct(product);
         return "redirect:/cart/get";
     }
+
+    @RequestMapping(value ="add/{productID}",method = RequestMethod.GET)
+    public String addItem(@PathVariable Integer productID){
+        Product product = productService.getProductById(productID);
+        LOG.info("Received request to delete " + product + " from cart");
+        shoppingCart.addProduct(product);
+        return "redirect:/cart/get";
+    }
+
     @RequestMapping(value = "/remove_all",method = RequestMethod.GET)
     public String removeAll(){
         LOG.info("Received request to clear cart");

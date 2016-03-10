@@ -38,8 +38,13 @@
                         <td><c:out value="${cartItem.key.price}"/></td>
                         <td><c:out value="${cartItem.value}"/></td>
                         <td>
+                            <button type="button" onclick="location.href='/cart/add/${cartItem.key.productID}'"
+                                    class="btn btn-default">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
                             <button type="button" onclick="location.href='/cart/delete/${cartItem.key.productID}'"
-                                    class="btn btn-default">Remove
+                                    class="btn btn-default">
+                                <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                             </button>
                         </td>
                     </tr>

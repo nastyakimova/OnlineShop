@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,10 +36,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void createOrder(Customer customer, Map<Product,Integer> productCart) {
+    public void createOrder(Customer customer, Map<Product, Integer> productCart) {
         if (!customer.getIsLocked()) {
             Order order = new Order();
-            order.setProductMap(productCart);
+            List<Product> productList = new ArrayList<>();
+            productCart.forEach((product, quantity) -> {
+                for (int i = 0; i < quantity; i++) {
+                    productList.add(product);
+                }
+            });
+            order.setProductList(productList);
             LOG.info("products were added to the order " + order);
             order.setCustomer(customer);
             orderRepository.save(order);
