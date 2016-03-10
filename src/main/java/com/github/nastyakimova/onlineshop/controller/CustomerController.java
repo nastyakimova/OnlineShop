@@ -75,13 +75,8 @@ public class CustomerController {
             method = RequestMethod.POST)
     public String lockCustomer(@PathVariable Integer customerID) {
         Customer customer=customerService.getCustomerById(customerID);
-        if (!customer.getIsLocked()) {
-            LOG.info("Received request to add " + customer + " to blacklist");
+         LOG.info("Received request to lock/unlock " + customer);
             customerService.lockCustomer(customer);
-        } else {
-            LOG.info("Received request to remove  " + customer + " from blacklist");
-            customerService.unlockCustomer(customer);
-        }
         return "redirect:/admin/list_customers";
     }
 }

@@ -44,18 +44,20 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void lockCustomer(Customer customer) {
-        customer.setIsLocked(true);
-        customerRepository.save(customer);
-        LOG.info(customer + " was locked");
+        if (!customer.getIsLocked()) {
+            customer.setIsLocked(true);
+            customerRepository.save(customer);
+            LOG.info(customer + " was locked");
+        } else {
+            unlockCustomer(customer);
+        }
     }
 
     @Override
     public void unlockCustomer(Customer customer) {
-        if (customer.getIsLocked()) {
             customer.setIsLocked(false);
             customerRepository.save(customer);
             LOG.info(customer + " was unlocked");
-        }
     }
 
     @Override
@@ -67,8 +69,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer getCustomerByEmail(String email) {
-        Customer customer=customerRepository.findByEmail(email);
-        LOG.info(customer+" was loaded from the database");
+        Customer customer = customerRepository.findByEmail(email);
+        LOG.info(customer + " was loaded from the database");
         return customer;
     }
 }

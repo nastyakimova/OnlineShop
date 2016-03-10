@@ -38,20 +38,18 @@ public class OrderController {
     @RequestMapping(value = "/order/create/{customerID}", method = RequestMethod.POST)
     public String createOrder(@PathVariable Integer customerID) {
         LOG.info("Received request to create new order");
-        Customer customer=customerService.getCustomerById(customerID);
-        if (!customer.getIsLocked()) {
-            orderService.createOrder(customer,shoppingCart.getProductList());
-            shoppingCart.removeAllProducts();
-        }
+        Customer customer = customerService.getCustomerById(customerID);
+        orderService.createOrder(customer, shoppingCart.getProductList());
+        shoppingCart.removeAllProducts();
         return "redirect:/order/get";
 
     }
 
-    @RequestMapping(value = "/order/get",method = RequestMethod.GET)
-    public String getOrder(ModelMap modelMap){
+    @RequestMapping(value = "/order/get", method = RequestMethod.GET)
+    public String getOrder(ModelMap modelMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Customer customer = customerService.getCustomerByEmail(authentication.getName());
-        modelMap.addAttribute("listOrders",customer.getOrderList());
+        modelMap.addAttribute("listOrders", customer.getOrderList());
         return "customer_orders";
     }
 }
