@@ -15,7 +15,7 @@
 <div class="container">
     <h3>Orders</h3>
     <c:choose>
-        <c:when test="${not empty listOrders}">
+        <c:when test="${not empty orders}">
             <table class="table">
                 <thead class="thead-default">
                 <tr>
@@ -26,16 +26,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${listOrders}" var="order">
+                <c:forEach items="${orders}" var="order">
                 <tr>
-                    <td><c:out value="${order.orderID}"/></td>
-                    <td><c:out value="${order.customer.name} ${order.customer.surname}"/></td>
-                    <td><c:forEach items="${order.productList}" var="product">
-                        <c:out value="${product.title} (${product.price})"/>
+                    <td><c:out value="${order.key.orderID}"/></td>
+                    <td><c:out value="${order.key.customer.name} ${order.key.customer.surname}"/></td>
+                    <td><c:forEach items="${order.value}" var="orderValue">
+                        <c:out value="${orderValue.key.title} x ${orderValue.value}"/>
+                        <br>
                     </c:forEach></td>
                     <td><c:set var="total" value="${0}"/>
-                        <c:forEach items="${order.productList}" var="product">
-                            <c:set var="total" value="${total + product.price}"/>
+                        <c:forEach items="${order.value}" var="orderValue">
+                            <c:set var="total" value="${total + orderValue.key.price*orderValue.value}"/>
                         </c:forEach>
                         <c:out value="${total}"/>
                     </td>

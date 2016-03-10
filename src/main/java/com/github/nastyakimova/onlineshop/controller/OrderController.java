@@ -41,7 +41,7 @@ public class OrderController {
     @RequestMapping(value = "/admin/list_orders", method = RequestMethod.GET)
     public String listOrders(ModelMap modelMap) {
         LOG.info("Received request to show all orders");
-        modelMap.addAttribute("listOrders", orderService.getAllOrders());
+        modelMap.addAttribute("orders",orderListToMap(orderService.getAllOrders()));
         return "list_orders";
     }
 
