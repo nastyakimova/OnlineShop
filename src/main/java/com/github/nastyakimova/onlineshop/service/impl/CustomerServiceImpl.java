@@ -36,13 +36,6 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCustomer(Customer customer) {
-        customerRepository.delete(customer);
-        LOG.info(customer + " was deleted from the database");
-
-    }
-
-    @Override
     public void lockCustomer(Customer customer) {
         if (!customer.getIsLocked()) {
             customer.setIsLocked(true);

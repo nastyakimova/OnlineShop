@@ -9,8 +9,6 @@ public interface CustomerService {
 
     Customer getCustomerById(Integer customerID);
 
-    void deleteCustomer(Customer customer);
-
     void lockCustomer(Customer customer);
 
     void unlockCustomer(Customer customer);

@@ -2,6 +2,8 @@ package com.github.nastyakimova.onlineshop.controller;
 
 
 import com.github.nastyakimova.onlineshop.entity.Customer;
+import com.github.nastyakimova.onlineshop.entity.Order;
+import com.github.nastyakimova.onlineshop.entity.Product;
 import com.github.nastyakimova.onlineshop.service.CustomerService;
 import com.github.nastyakimova.onlineshop.service.OrderService;
 import com.github.nastyakimova.onlineshop.service.ProductService;
@@ -14,6 +16,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
 @Controller
 public class OrderController {
@@ -40,7 +50,7 @@ public class OrderController {
         LOG.info("Received request to create new order");
         Customer customer = customerService.getCustomerById(customerID);
         orderService.createOrder(customer, shoppingCart.getProductCart());
-      shoppingCart.emptyCart();
+        shoppingCart.emptyCart();
         return "redirect:/order/get";
 
     }
@@ -49,7 +59,17 @@ public class OrderController {
     public String getOrder(ModelMap modelMap) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Customer customer = customerService.getCustomerByEmail(authentication.getName());
-        modelMap.addAttribute("listOrders", customer.getOrderList());
+        modelMap.addAttribute("orders",orderListToMap(customer.getOrderList()));
         return "customer_orders";
+    }
+
+    private Map<Order, Map<Product, Long>> orderListToMap(List<Order> orderList) {
+        return orderList
+                .stream()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        order -> order.getProductList()
+                                .stream()
+                                .collect(groupingBy(Function.identity(), counting()))));
     }
 }
