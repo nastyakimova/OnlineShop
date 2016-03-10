@@ -35,5 +35,6 @@
           class="com.github.nastyakimova.onlineshop.util.CustomAuthenticationHandler">
     </bean>
     <bean id="bcryptEncoder"
-          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+          class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+            </bean>
 </beans>
