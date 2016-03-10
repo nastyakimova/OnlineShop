@@ -12,13 +12,13 @@
     <h3>Create new product</h3>
     <form:form method="post" action="${actionUrl}" modelAttribute="product">
         <div class="form-group">
-            <label for="title" >Title:</label>
-            <form:input path="title" class="form-control" placeholder="Title"/>
+            <label for="title">Title:</label>
+            <form:input path="title" class="form-control" placeholder="Title" required="required"/>
         </div>
 
         <div class="form-group">
             <label for="price">Price:</label>
-            <form:input path="price" class="form-control" placeholder="Price ($)"/>
+            <form:input path="price" class="form-control" placeholder="Price ($)" required="required"/>
         </div>
         <br>
         <tr>

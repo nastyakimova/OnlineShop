@@ -39,6 +39,7 @@ public class CustomerController {
     @RequestMapping(value = "/customer/save", method = RequestMethod.POST)
     public String addCustomer(@ModelAttribute("customer") Customer customer) {
         LOG.info("Received request to save a customer");
+        String nonEncryptedPassword=customer.getPassword();
         String encryptedPassword=new BCryptPasswordEncoder().encode(customer.getPassword());
         customer.setPassword(encryptedPassword);
         customerService.saveCustomer(customer);
@@ -46,7 +47,7 @@ public class CustomerController {
         userService.saveUser(user);
         Authority authority = new Authority(user, "user");
         authorityService.saveAuthority(authority);
-        doAutoLogin(customer.getEmail(), customer.getPassword());
+        doAutoLogin(customer.getEmail(), nonEncryptedPassword);
         return "redirect:/home";
     }
 

@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List of customers</title>
+    <title>Orders</title>
     <style type="text/css">
         th {
             text-align: left
