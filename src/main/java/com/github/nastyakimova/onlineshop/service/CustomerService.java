@@ -15,6 +15,7 @@ public interface CustomerService {
 
     /**
      * Gets customer by its id.
+     *
      * @param customerID ID of a chosen customer
      * @return Customer object
      */
@@ -23,6 +24,7 @@ public interface CustomerService {
     /**
      * Blocks customer by admin.
      * Sets customer`s flag isLocked to value True.
+     *
      * @param customer customer to be locked
      */
     void lockCustomer(Customer customer);
@@ -30,18 +32,21 @@ public interface CustomerService {
     /**
      * Unblock customer by admin.
      * Sets customer`s flag isLocked to value False.
+     *
      * @param customer customer to be unlocked
      */
     void unlockCustomer(Customer customer);
 
     /**
      * Returns list of all customers stored in database
+     *
      * @return List of Customer object
      */
     List<Customer> getAllCustomers();
 
     /**
      * Returns customer with given email/
+     *
      * @param email email of a customer
      * @return Customer object with given email
      */
