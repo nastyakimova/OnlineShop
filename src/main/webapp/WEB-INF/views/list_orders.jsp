@@ -31,7 +31,7 @@
                     <td><c:out value="${order.key.orderID}"/></td>
                     <td><c:out value="${order.key.customer.name} ${order.key.customer.surname}"/></td>
                     <td><c:forEach items="${order.value}" var="orderValue">
-                        <c:out value="${orderValue.key.title} x ${orderValue.value}"/>
+                        <c:out value="${orderValue.key.title}(${orderValue.key.price}) x ${orderValue.value}"/>
                         <br>
                     </c:forEach></td>
                     <td><c:set var="total" value="${0}"/>
