@@ -7,7 +7,7 @@ Store front represents a website that is accessed by customers enabling them to 
 Application provides the following functionality:
 
 ####For admin:
-- Creating, editing and deliting products
+- Creating, editing and deleting products
 - Viewing information about orders
 - Viewing information about registered customers
 - Blocking/ unblocking customer
