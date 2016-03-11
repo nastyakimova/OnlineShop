@@ -6,18 +6,18 @@ import java.util.List;
 
 public interface CustomerService {
     /**
-     * Update customer if he has already exists in database.
-     * Otherwise creates new Customer object
+     * Update customer if he has already exists.
+     * Otherwise creates new Customer object.
      *
-     * @param customer Customer object which is going to be created
+     * @param customer Customer object which is going to be created or updated.
      */
     void saveCustomer(Customer customer);
 
     /**
      * Gets customer by its id.
      *
-     * @param customerID ID of a chosen customer
-     * @return Customer object
+     * @param customerID ID of a chosen customer.
+     * @return Customer object.
      */
     Customer getCustomerById(Integer customerID);
 
@@ -25,7 +25,7 @@ public interface CustomerService {
      * Blocks customer by admin.
      * Sets customer`s flag isLocked to value True.
      *
-     * @param customer customer to be locked
+     * @param customer customer to be locked.
      */
     void lockCustomer(Customer customer);
 
@@ -33,22 +33,22 @@ public interface CustomerService {
      * Unblock customer by admin.
      * Sets customer`s flag isLocked to value False.
      *
-     * @param customer customer to be unlocked
+     * @param customer customer to be unlocked.
      */
     void unlockCustomer(Customer customer);
 
     /**
-     * Returns list of all customers stored in database
+     * Returns list of all stored customers.
      *
-     * @return List of Customer object
+     * @return List of Customer object.
      */
     List<Customer> getAllCustomers();
 
     /**
-     * Returns customer with given email/
+     * Returns customer with given email.
      *
-     * @param email email of a customer
-     * @return Customer object with given email
+     * @param email email of a customer.
+     * @return Customer object with given email.
      */
     Customer getCustomerByEmail(String email);
 

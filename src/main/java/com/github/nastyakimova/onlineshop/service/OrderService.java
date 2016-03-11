@@ -10,9 +10,9 @@ import java.util.Map;
 public interface OrderService {
 
     /**
-     * Returns list of all orders saved in database.
+     * Returns list of all saved orders.
      *
-     * @return List of all orders
+     * @return List of all orders.
      */
     List<Order> getAllOrders();
 
@@ -20,8 +20,8 @@ public interface OrderService {
      * Creates new order for given customer.
      * Adds to this order all items, which were chosen and added to customer`s product cart.
      *
-     * @param customer    Customer who make an order
-     * @param productCart Map which stores all chosen products and their quantity
+     * @param customer    Customer who make an order.
+     * @param productCart Map which stores all chosen products and their quantity.
      */
     void createOrder(Customer customer, Map<Product, Integer> productCart);
 
