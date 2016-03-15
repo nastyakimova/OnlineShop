@@ -27,18 +27,20 @@
         <label for="j_password" class="sr-only">Password</label>
         <input type="password" id="j_password" name="j_password" class="form-control"
                placeholder="Password" required>
-
+        <c:if test="${not empty param.login_error}">
+            <div class="alert alert-danger">
+                <c:out value="Incorrect username or password"/>
+            </div>
+        </c:if>
         <div class='wrapper text-center'>
+            <button class="btn btn-lg btn-primary" onclick="location.href='/home'">
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            </button>
             <button class="btn btn-lg btn-primary" type="submit">Sign in</button>
             <button class="btn btn-lg btn-primary" type="button"
                     onclick="location.href='/customer/new'">Register
             </button>
         </div>
-        <span class="text-danger">
-                <c:if test="${not empty param.login_error}">
-                    Login failed: <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
-                </c:if>
-        </span>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 </div>
